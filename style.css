@@ -342,6 +342,19 @@ section {
     transition: all 0.3s ease;
 }
 
+.skill-card a,
+.skill-card i {
+    color: white;
+    position: relative;
+    z-index: 10000;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.skill-card a:hover {
+    color: var(--primary);
+}
+
 /* Hover Effects */
 .skill-card:hover {
     transform: translateY(-10px) scale(1.03);
@@ -464,6 +477,7 @@ section {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
+    z-index: 10;
 }
 
 .project-links a:hover {
@@ -591,16 +605,6 @@ section {
     opacity: 0;
 }
 
-/* .education-card {
-    background: var(--dark-light);
-    padding: 2rem;
-    border-radius: 15px;
-    transition: all 0.3s;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    position: relative;
-    overflow: hidden;
-} */
-
 .education-card:hover {
     transform: translateY(-10px) scale(1.03);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
@@ -616,14 +620,6 @@ section {
     width: fit-content;
     margin-bottom: 10px;
 }
-
-/* .education-card a {
-    text-decoration: none;
-    background-color: white;
-    border-radius: 20px;
-    padding: 5px;
-    color: var(--secondary);
-} */
 
 .education-card h4 {
     color: var(--primary);
@@ -690,7 +686,19 @@ section {
 }
 
 .contact-item p {
-    color: var(--gray);
+    color: var(--light);
+    opacity: 0.8;
+}
+
+.contact-item a {
+    color: var(--light);
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+.contact-item a:hover {
+    color: var(--primary);
+    opacity: 1;
 }
 
 .contact-form {
