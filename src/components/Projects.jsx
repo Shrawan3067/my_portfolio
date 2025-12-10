@@ -3,19 +3,20 @@ import allcalculator from '../assets/allcalculator.png';
 import smartnepal from '../assets/smartnepal.png';
 import meditrack from '../assets/image.png';
 import sajilobhoj from '../assets/sajilobhoj.png';
+import suwidha from '../assets/suwidha.png';
 
 const Projects = () => {
   const projects = [
     {
-      title: 'SajiloBhoj',
-      description: 'A full stack online food delivery web application offering a wide range of restaurants and foods.',
+      title: 'BiteXpress',
+      description: 'A user-friendly platform that helps people easily discover, order, and enjoy delicious meals from local restaurants, streamlining the food ordering experience with convenience and speed.',
       image: `${sajilobhoj}`,
       tags: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
-      demoLink: 'https://sajilo-bhoj-food-delivery-app.vercel.app/',
+      demoLink: 'https://bite-xpress-food-delivery-app.vercel.app/',
     },
-    {
-      title: 'Suwidha',
-      description: 'A powerful react native mobile application for both android and ios. A platform featuring AI-driven itineraries, real-time booking, and dynamic recommendations.',
+     {
+      title: 'SmartNepal',
+      description: 'A powerful web-based travel platform featuring AI-driven itineraries, real-time booking, and dynamic recommendations.',
       image: `${smartnepal}`,
       tags: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
       demoLink: 'https://smartnepal.netlify.app/',
@@ -28,11 +29,11 @@ const Projects = () => {
       demoLink: 'https://www.allcalculator.net',
     },
     {
-      title: 'SmartNepal',
-      description: 'A powerful web-based travel platform featuring AI-driven itineraries, real-time booking, and dynamic recommendations.',
-      image: `${smartnepal}`,
+      title: 'Suwidha',
+      description: 'A cross-platform online marketplace mobile app built with React Native. It allows users to buy, sell, and explore products seamlessly on both Android and iOS.',
+      image: `${suwidha}`,
       tags: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
-      demoLink: 'https://smartnepal.netlify.app/',
+      demoLink: 'https://github.com/Shrawan3067/Suwidha---Online-Marketplace.git',
     },
     {
       title: 'MediTrack',
@@ -60,7 +61,7 @@ const Projects = () => {
               className="project-card animate-fade-in"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
-              <div className="h-65 overflow-hidden">
+              <div className="h-auto overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}

@@ -39,7 +39,7 @@ const Education = () => {
               className="education-card animate-fade-in"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
-              <h4 className="text-xl font-bold text-primary mb-6">{cert.title}</h4>
+              <h4 className="text-[19px] font-bold text-primary mb-6">{cert.title}</h4>
               <div className="h-48 mb-6 overflow-hidden rounded-lg">
                 <img
                   src={cert.image}

@@ -1,4 +1,5 @@
 import React from 'react';
+import resume from '../assets/Shrawan_CV.pdf';
 
 const About = () => {
   return (
@@ -72,7 +73,7 @@ const About = () => {
             </div>
 
             <a
-              href="/Images/Shrawan_Kumar_Sah_CV.pdf"
+              href={resume}
               target="_blank"
               rel="noopener noreferrer"
               className="btn inline-block"

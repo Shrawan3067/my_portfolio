@@ -1,61 +1,136 @@
 import React from 'react';
 
 const Skills = () => {
-  const skills = [
+  const skillCategories = [
     {
-      icon: 'fab fa-java',
-      title: 'Java',
-      description: 'Expertise in Java Swing for GUI-based applications, event-driven programming, and core Java principles.',
+      title: 'Languages',
+      skills: [
+        {
+          icon: 'fab fa-java',
+          title: 'Java',
+          description: 'Expertise in Java Swing for GUI-based applications, event-driven programming, and core Java principles.',
+        },
+        {
+          icon: 'fab fa-js',
+          title: 'JavaScript',
+          description: 'Proficient in client-side scripting, DOM manipulation, and creating interactive web experiences.',
+        },
+      ]
     },
     {
-      icon: 'fab fa-js',
-      title: 'JavaScript',
-      description: 'Proficient in client-side scripting, DOM manipulation, and creating interactive web experiences.',
+      title: 'Frontend',
+      skills: [
+        {
+          icon: 'fab fa-html5',
+          title: 'HTML & CSS',
+          description: 'Skilled in creating responsive and accessible web interfaces with modern design principles.',
+        },
+        {
+          icon: 'fab fa-react',
+          title: 'React.js',
+          description: 'Experience in building dynamic single-page applications with React framework.',
+        },
+        {
+          icon: 'fab fa-bootstrap',
+          title: 'Bootstrap',
+          description: 'Skilled in designing responsive and mobile-first web interfaces using Bootstrap.',
+        },
+        {
+          icon: 'fas fa-palette',
+          title: 'Tailwind CSS',
+          description: 'Proficient in utility-first CSS framework for rapid UI development.',
+        },
+        {
+          icon: 'fas fa-mobile-alt',
+          title: 'Responsive Design',
+          description: 'Creating websites that work seamlessly across all device sizes.',
+        },
+      ]
     },
     {
-      icon: 'fas fa-code',
-      title: 'DSA',
-      description: 'Strong foundation in Data Structures and Algorithms with problem-solving skills.',
+      title: 'Backend & Tools',
+      skills: [
+        {
+          icon: 'fab fa-node-js',
+          title: 'Node.js',
+          description: 'Knowledge of server-side JavaScript development and backend services.',
+        },
+        {
+          icon: 'fab fa-node-js',
+          title: 'Express.js',
+          description: 'Proficient in building scalable server-side applications and RESTful APIs using Express.js.',
+        },
+        {
+          icon: 'fas fa-database',
+          title: 'MySQL',
+          description: 'Experienced in designing and managing relational databases with MySQL.',
+        },
+        {
+          icon: 'fas fa-database',
+          title: 'MongoDB',
+          description: 'Experience with NoSQL databases and document-oriented data modeling.',
+        },
+        {
+          icon: 'fab fa-git-alt',
+          title: 'Git & GitHub',
+          description: 'Proficient in version control and collaborative development workflows.',
+        },
+        {
+          icon: 'fas fa-toolbox',
+          title: 'Postman',
+          description: 'Skilled in API testing, documentation, and development workflows.',
+        },
+        {
+          icon: 'fab fa-jira',
+          title: 'Jira',
+          description: 'Experience with agile project management and issue tracking.',
+        },
+      ]
     },
     {
-      icon: 'fab fa-html5',
-      title: 'HTML & CSS',
-      description: 'Skilled in creating responsive and accessible web interfaces with modern design principles.',
+      title: 'CS Fundamentals',
+      skills: [
+        {
+          icon: 'fas fa-code',
+          title: 'Data Structures & Algorithms',
+          description: 'Strong foundation in Data Structures and Algorithms with problem-solving skills.',
+        },
+        {
+          icon: 'fas fa-cogs',
+          title: 'Operating System',
+          description: 'Understanding of OS concepts, processes, memory management, and system design.',
+        },
+        {
+          icon: 'fas fa-network-wired',
+          title: 'Computer Networks',
+          description: 'Knowledge of networking protocols, architectures, and communication principles.',
+        },
+        {
+          icon: 'fas fa-shapes',
+          title: 'Object-Oriented Programming',
+          description: 'Proficient in OOP concepts including encapsulation, inheritance, and polymorphism.',
+        },
+      ]
     },
     {
-      icon: 'fab fa-react',
-      title: 'React.js',
-      description: 'Experience in building dynamic single-page applications with React framework.',
-    },
-    {
-      icon: 'fab fa-node-js',
-      title: 'Node.js',
-      description: 'Knowledge of server-side JavaScript development and backend services.',
-    },
-    {
-      icon: 'fab fa-node-js',
-      title: 'Express.js',
-      description: 'Proficient in building scalable server-side applications and RESTful APIs using Express.js.',
-    },
-    {
-      icon: 'fab fa-bootstrap',
-      title: 'Bootstrap',
-      description: 'Skilled in designing responsive and mobile-first web interfaces using Bootstrap.',
-    },
-    {
-      icon: 'fab fa-git-alt',
-      title: 'Git & GitHub',
-      description: 'Proficient in version control and collaborative development workflows.',
-    },
-    {
-      icon: 'fas fa-database',
-      title: 'MySQL',
-      description: 'Experienced in designing and managing relational databases with MySQL.',
-    },
-    {
-      icon: 'fas fa-mobile-alt',
-      title: 'Responsive Design',
-      description: 'Creating websites that work seamlessly across all device sizes.',
+      title: 'Soft Skills',
+      skills: [
+        {
+          icon: 'fas fa-users',
+          title: 'Team Leadership',
+          description: 'Experience in leading development teams and coordinating projects.',
+        },
+        {
+          icon: 'fas fa-lightbulb',
+          title: 'Problem-Solving',
+          description: 'Strong analytical skills and ability to find efficient solutions to complex challenges.',
+        },
+        {
+          icon: 'fas fa-brain',
+          title: 'Critical Thinking',
+          description: 'Ability to analyze situations objectively and make reasoned judgments.',
+        },
+      ]
     },
   ];
 
@@ -69,19 +144,26 @@ const Skills = () => {
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {skills.map((skill, index) => (
-            <div
-              key={index}
-              className="skill-card animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <i className={`${skill.icon} text-5xl mb-6`}></i>
-              <h3 className="text-xl font-bold mb-3">{skill.title}</h3>
-              <p className="text-gray">{skill.description}</p>
+        {skillCategories.map((category, categoryIndex) => (
+          <div key={categoryIndex} className="mb-12 animate-fade-in">
+            <h3 className="text-2xl font-bold mb-6 text-primary border-b pb-2 border-gray/30">
+              {category.title}
+            </h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {category.skills.map((skill, skillIndex) => (
+                <div
+                  key={skillIndex}
+                  className="skill-card animate-fade-in"
+                  style={{ animationDelay: `${skillIndex * 0.05}s` }}
+                >
+                  <i className={`${skill.icon} text-5xl mb-6`}></i>
+                  <h4 className="text-xl font-bold mb-3">{skill.title}</h4>
+                  <p className="text-gray">{skill.description}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );
