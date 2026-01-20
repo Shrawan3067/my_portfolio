@@ -4,6 +4,7 @@ import smartnepal from '../assets/smartnepal.png';
 import meditrack from '../assets/image.png';
 import sajilobhoj from '../assets/sajilobhoj.png';
 import suwidha from '../assets/suwidha.png';
+import careerconnect from '../assets/careerconnect.png';
 
 const Projects = () => {
   const projects = [
@@ -11,15 +12,23 @@ const Projects = () => {
       title: 'BiteXpress',
       description: 'A user-friendly platform that helps people easily discover, order, and enjoy delicious meals from local restaurants, streamlining the food ordering experience with convenience and speed.',
       image: `${sajilobhoj}`,
-      tags: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
+      tags: ['React.js', 'TypeScript', 'Tailwind CSS', 'Responsive Design'],
       demoLink: 'https://bite-xpress-food-delivery-app.vercel.app/',
     },
      {
       title: 'SmartNepal',
       description: 'A powerful web-based travel platform featuring AI-driven itineraries, real-time booking, and dynamic recommendations.',
       image: `${smartnepal}`,
-      tags: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
+      tags: ['React.js', 'JavaScript', 'Tailwind CSS', 'Responsive Design'],
       demoLink: 'https://smartnepal.netlify.app/',
+    },
+    ,
+     {
+      title: 'CareerConnect',
+      description: 'An inclusive and accessible job portal connecting talent with opportunities through a simple, user-friendly, and barrier-free experience.',
+      image: `${careerconnect}`,
+      tags: ['React.js', 'TypeScript', 'Tailwind CSS', 'Responsive Design'],
+      demoLink: 'https://accessible-job-portal.vercel.app/',
     },
     {
       title: 'Calculators',

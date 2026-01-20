@@ -11,10 +11,20 @@ const Skills = () => {
           description: 'Expertise in Java Swing for GUI-based applications, event-driven programming, and core Java principles.',
         },
         {
-          icon: 'fab fa-js',
-          title: 'JavaScript',
-          description: 'Proficient in client-side scripting, DOM manipulation, and creating interactive web experiences.',
+          icon: 'fab fa-cuttlefish',
+          title: 'C++',
+          description: 'Proficient in C++ for system programming, algorithms, and performance-critical applications.',
         },
+        {
+          icon: 'fab fa-python',
+          title: 'Python',
+          description: 'Experience in Python for scripting, data analysis, and backend development.',
+        },
+        {
+          icon: 'fas fa-database',
+          title: 'SQL',
+          description: 'Skilled in writing complex queries, database design, and data manipulation with SQL.',
+        }
       ]
     },
     {
@@ -22,13 +32,28 @@ const Skills = () => {
       skills: [
         {
           icon: 'fab fa-html5',
-          title: 'HTML & CSS',
+          title: 'HTML5 & CSS3',
           description: 'Skilled in creating responsive and accessible web interfaces with modern design principles.',
         },
         {
           icon: 'fab fa-react',
           title: 'React.js',
           description: 'Experience in building dynamic single-page applications with React framework.',
+        },
+        {
+          icon: 'fab fa-js-square',
+          title: 'TypeScript',
+          description: 'Proficient in TypeScript for type-safe JavaScript development and scalable applications.',
+        },
+        {
+          icon: 'fab fa-js',
+          title: 'JavaScript (ES6+)',
+          description: 'Expert in modern JavaScript features including ES6+ syntax, promises, async/await, and modules.',
+        },
+        {
+          icon: 'fas fa-cube',
+          title: 'Redux',
+          description: 'Experience with state management using Redux for complex React applications.',
         },
         {
           icon: 'fab fa-bootstrap',
@@ -41,6 +66,26 @@ const Skills = () => {
           description: 'Proficient in utility-first CSS framework for rapid UI development.',
         },
         {
+          icon: 'fas fa-bolt',
+          title: 'Vite.js',
+          description: 'Experience with Vite.js for fast build tooling and optimized development workflow.',
+        },
+      ]
+    },
+    {
+      title: 'Frontend Concepts',
+      skills: [
+        {
+          icon: 'fas fa-cubes',
+          title: 'Component-Based Architecture',
+          description: 'Expert in building reusable, modular UI components following React best practices.',
+        },
+        {
+          icon: 'fas fa-universal-access',
+          title: 'Accessibility (ARIA)',
+          description: 'Skilled in creating accessible web applications using ARIA attributes and WCAG guidelines.',
+        },
+        {
           icon: 'fas fa-mobile-alt',
           title: 'Responsive Design',
           description: 'Creating websites that work seamlessly across all device sizes.',
@@ -48,7 +93,7 @@ const Skills = () => {
       ]
     },
     {
-      title: 'Backend & Tools',
+      title: 'Backend & APIs',
       skills: [
         {
           icon: 'fab fa-node-js',
@@ -56,17 +101,27 @@ const Skills = () => {
           description: 'Knowledge of server-side JavaScript development and backend services.',
         },
         {
-          icon: 'fab fa-node-js',
+          icon: 'fas fa-server',
           title: 'Express.js',
           description: 'Proficient in building scalable server-side applications and RESTful APIs using Express.js.',
         },
+        {
+          icon: 'fas fa-exchange-alt',
+          title: 'REST APIs',
+          description: 'Expert in designing, developing, and consuming RESTful APIs with proper HTTP methods and status codes.',
+        },
+      ]
+    },
+    {
+      title: 'Databases & Tools',
+      skills: [
         {
           icon: 'fas fa-database',
           title: 'MySQL',
           description: 'Experienced in designing and managing relational databases with MySQL.',
         },
         {
-          icon: 'fas fa-database',
+          icon: 'fas fa-leaf',
           title: 'MongoDB',
           description: 'Experience with NoSQL databases and document-oriented data modeling.',
         },
