@@ -374,6 +374,10 @@ const Contact = () => {
           transition: all 0.3s ease;
           position: relative;
         }
+
+        body.light .btn {
+        color: black;
+        }
         
         .btn:hover:not(:disabled) {
           transform: translateY(-2px);
