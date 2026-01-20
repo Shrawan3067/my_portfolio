@@ -283,9 +283,9 @@ const Contact = () => {
                 </p>
               </div>
 
-              <button 
+              <button
                 type="submit" 
-                className="btn w-full group relative overflow-hidden"
+                className="sendBtn w-full group relative overflow-hidden"
                 disabled={loading}
               >
                 <span className="relative z-10 flex items-center justify-center">
@@ -363,7 +363,7 @@ const Contact = () => {
           color: rgba(255, 255, 255, 0.5);
         }
         
-        .btn {
+        .sendBtn {
           padding: 1rem 2rem;
           background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
           color: white;
@@ -375,16 +375,16 @@ const Contact = () => {
           position: relative;
         }
 
-        body.light .btn {
+        body.light .sendBtn {
         color: black;
         }
         
-        .btn:hover:not(:disabled) {
+        .sendBtn:hover:not(:disabled) {
           transform: translateY(-2px);
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
-        .btn:disabled {
+        .sendBtn:disabled {
           opacity: 0.6;
           cursor: not-allowed;
         }
