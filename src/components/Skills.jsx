@@ -4,221 +4,109 @@ const Skills = () => {
   const skillCategories = [
     {
       title: 'Languages',
-      skills: [
-        {
-          icon: 'fab fa-java',
-          title: 'Java',
-          description: 'Expertise in Java Swing for GUI-based applications, event-driven programming, and core Java principles.',
-        },
-        {
-          icon: 'fab fa-cuttlefish',
-          title: 'C++',
-          description: 'Proficient in C++ for system programming, algorithms, and performance-critical applications.',
-        },
-        {
-          icon: 'fab fa-python',
-          title: 'Python',
-          description: 'Experience in Python for scripting, data analysis, and backend development.',
-        },
-        {
-          icon: 'fas fa-database',
-          title: 'SQL',
-          description: 'Skilled in writing complex queries, database design, and data manipulation with SQL.',
-        }
-      ]
+      icon: '💻',
+      color: '#3B82F6',
+      skills: ['Java', 'C++', 'JavaScript (ES6+)', 'SQL']
     },
     {
       title: 'Frontend',
-      skills: [
-        {
-          icon: 'fab fa-html5',
-          title: 'HTML5 & CSS3',
-          description: 'Skilled in creating responsive and accessible web interfaces with modern design principles.',
-        },
-        {
-          icon: 'fab fa-react',
-          title: 'React.js',
-          description: 'Experience in building dynamic single-page applications with React framework.',
-        },
-        {
-          icon: 'fab fa-js-square',
-          title: 'TypeScript',
-          description: 'Proficient in TypeScript for type-safe JavaScript development and scalable applications.',
-        },
-        {
-          icon: 'fab fa-js',
-          title: 'JavaScript (ES6+)',
-          description: 'Expert in modern JavaScript features including ES6+ syntax, promises, async/await, and modules.',
-        },
-        {
-          icon: 'fas fa-cube',
-          title: 'Redux',
-          description: 'Experience with state management using Redux for complex React applications.',
-        },
-        {
-          icon: 'fab fa-bootstrap',
-          title: 'Bootstrap',
-          description: 'Skilled in designing responsive and mobile-first web interfaces using Bootstrap.',
-        },
-        {
-          icon: 'fas fa-palette',
-          title: 'Tailwind CSS',
-          description: 'Proficient in utility-first CSS framework for rapid UI development.',
-        },
-        {
-          icon: 'fas fa-bolt',
-          title: 'Vite.js',
-          description: 'Experience with Vite.js for fast build tooling and optimized development workflow.',
-        },
-      ]
-    },
-    {
-      title: 'Frontend Concepts',
-      skills: [
-        {
-          icon: 'fas fa-cubes',
-          title: 'Component-Based Architecture',
-          description: 'Expert in building reusable, modular UI components following React best practices.',
-        },
-        {
-          icon: 'fas fa-universal-access',
-          title: 'Accessibility (ARIA)',
-          description: 'Skilled in creating accessible web applications using ARIA attributes and WCAG guidelines.',
-        },
-        {
-          icon: 'fas fa-mobile-alt',
-          title: 'Responsive Design',
-          description: 'Creating websites that work seamlessly across all device sizes.',
-        },
-      ]
+      icon: '🎨',
+      color: '#8B5CF6',
+      skills: ['React.js', 'TypeScript', 'Redux', 'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap']
     },
     {
       title: 'Backend & APIs',
-      skills: [
-        {
-          icon: 'fab fa-node-js',
-          title: 'Node.js',
-          description: 'Knowledge of server-side JavaScript development and backend services.',
-        },
-        {
-          icon: 'fas fa-server',
-          title: 'Express.js',
-          description: 'Proficient in building scalable server-side applications and RESTful APIs using Express.js.',
-        },
-        {
-          icon: 'fas fa-exchange-alt',
-          title: 'REST APIs',
-          description: 'Expert in designing, developing, and consuming RESTful APIs with proper HTTP methods and status codes.',
-        },
-      ]
+      icon: '⚙️',
+      color: '#F59E0B',
+      skills: ['Node.js', 'Express.js', 'REST API Development']
+    },
+    {
+      title: 'Security',
+      icon: '🔒',
+      color: '#10B981',
+      skills: ['JWT Authentication', 'bcryptjs (Password Hashing)']
     },
     {
       title: 'Databases & Tools',
-      skills: [
-        {
-          icon: 'fas fa-database',
-          title: 'MySQL',
-          description: 'Experienced in designing and managing relational databases with MySQL.',
-        },
-        {
-          icon: 'fas fa-leaf',
-          title: 'MongoDB',
-          description: 'Experience with NoSQL databases and document-oriented data modeling.',
-        },
-        {
-          icon: 'fab fa-git-alt',
-          title: 'Git & GitHub',
-          description: 'Proficient in version control and collaborative development workflows.',
-        },
-        {
-          icon: 'fas fa-toolbox',
-          title: 'Postman',
-          description: 'Skilled in API testing, documentation, and development workflows.',
-        },
-        {
-          icon: 'fab fa-jira',
-          title: 'Jira',
-          description: 'Experience with agile project management and issue tracking.',
-        },
-      ]
-    },
-    {
-      title: 'CS Fundamentals',
-      skills: [
-        {
-          icon: 'fas fa-code',
-          title: 'Data Structures & Algorithms',
-          description: 'Strong foundation in Data Structures and Algorithms with problem-solving skills.',
-        },
-        {
-          icon: 'fas fa-cogs',
-          title: 'Operating System',
-          description: 'Understanding of OS concepts, processes, memory management, and system design.',
-        },
-        {
-          icon: 'fas fa-network-wired',
-          title: 'Computer Networks',
-          description: 'Knowledge of networking protocols, architectures, and communication principles.',
-        },
-        {
-          icon: 'fas fa-shapes',
-          title: 'Object-Oriented Programming',
-          description: 'Proficient in OOP concepts including encapsulation, inheritance, and polymorphism.',
-        },
-      ]
+      icon: '🗄️',
+      color: '#14B8A6',
+      skills: ['MySQL', 'MongoDB', 'Git', 'GitHub', 'Postman', 'Jira']
     },
     {
       title: 'Soft Skills',
-      skills: [
-        {
-          icon: 'fas fa-users',
-          title: 'Team Leadership',
-          description: 'Experience in leading development teams and coordinating projects.',
-        },
-        {
-          icon: 'fas fa-lightbulb',
-          title: 'Problem-Solving',
-          description: 'Strong analytical skills and ability to find efficient solutions to complex challenges.',
-        },
-        {
-          icon: 'fas fa-brain',
-          title: 'Critical Thinking',
-          description: 'Ability to analyze situations objectively and make reasoned judgments.',
-        },
-      ]
-    },
+      icon: '🤝',
+      color: '#EC4899',
+      skills: ['Communication', 'Team Collaboration', 'Problem Solving', 'Adaptability']
+    }
   ];
 
   return (
-    <section id="skills" className="py-24 bg-dark/10">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-4xl font-bold mb-4 relative inline-block">
-            My Skills
-            <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1/2 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></span>
+    <section id="skills" className="py-20 bg-gradient-to-br from-slate-50 to-gray-100 dark:from-slate-900 dark:to-gray-900">
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-14">
+          <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-2">What I Bring to the Table</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-3">
+            Skills & Expertise
           </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
         </div>
 
-        {skillCategories.map((category, categoryIndex) => (
-          <div key={categoryIndex} className="mb-12 animate-fade-in">
-            <h3 className="text-2xl font-bold mb-6 text-primary border-b pb-2 border-gray/30">
-              {category.title}
-            </h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {category.skills.map((skill, skillIndex) => (
-                <div
-                  key={skillIndex}
-                  className="skill-card animate-fade-in"
-                  style={{ animationDelay: `${skillIndex * 0.05}s` }}
-                >
-                  <i className={`${skill.icon} text-5xl mb-6`}></i>
-                  <h4 className="text-xl font-bold mb-3">{skill.title}</h4>
-                  <p className="text-gray">{skill.description}</p>
+        {/* Skills Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          {skillCategories.map((category, idx) => (
+            <div
+              key={idx}
+              className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+            >
+              {/* Colored Top Bar */}
+              <div 
+                className="h-2 transition-all duration-300 group-hover:h-3"
+                style={{ backgroundColor: category.color }}
+              ></div>
+              
+              <div className="p-6">
+                {/* Header */}
+                <div className="flex items-center gap-3 mb-4">
+                  <div 
+                    className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl transition-transform duration-300 group-hover:scale-110"
+                    style={{ backgroundColor: `${category.color}15` }}
+                  >
+                    {category.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-white">
+                    {category.title}
+                  </h3>
                 </div>
-              ))}
+
+                {/* Skills */}
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill, skillIdx) => (
+                    <span
+                      key={skillIdx}
+                      className="px-3 py-1.5 text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105 cursor-default"
+                      style={{
+                        backgroundColor: `${category.color}10`,
+                        color: category.color,
+                        border: `1px solid ${category.color}20`
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = category.color;
+                        e.currentTarget.style.color = 'white';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = `${category.color}10`;
+                        e.currentTarget.style.color = category.color;
+                      }}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -13,7 +13,7 @@ const CodingProfile = () => {
     {
       name: 'GeeksforGeeks',
       icon: `${gfg}`,
-      link: 'https://www.geeksforgeeks.org/user/sahshra6uox/',
+      link: 'https://www.geeksforgeeks.org/profile/shrawansah3067?tab=activity',
     },
     {
       name: 'GitHub',

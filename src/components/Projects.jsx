@@ -1,56 +1,62 @@
-import React from 'react';
-import allcalculator from '../assets/allcalculator.png';
-import smartnepal from '../assets/smartnepal.png';
-import meditrack from '../assets/image.png';
-import sajilobhoj from '../assets/sajilobhoj.png';
-import suwidha from '../assets/suwidha.png';
-import careerconnect from '../assets/careerconnect.png';
+import React from "react";
+import allcalculator from "../assets/allcalculator.png";
+import smartnepal from "../assets/smartnepal.png";
+import meditrack from "../assets/image.png";
+import sajilobhoj from "../assets/sajilobhoj.png";
+import suwidha from "../assets/suwidha.png";
+import careerconnect from "../assets/careerconnect.png";
 
 const Projects = () => {
   const projects = [
     {
-      title: 'BiteXpress',
-      description: 'A user-friendly platform that helps people easily discover, order, and enjoy delicious meals from local restaurants, streamlining the food ordering experience with convenience and speed.',
+      title: "BiteXpress",
+      description:
+        "A user-friendly platform that helps people easily discover, order, and enjoy delicious meals from local restaurants, streamlining the food ordering experience with convenience and speed.",
       image: `${sajilobhoj}`,
-      tags: ['React.js', 'TypeScript', 'Tailwind CSS', 'Responsive Design'],
-      demoLink: 'https://bite-xpress-food-delivery-app.vercel.app/',
+      tags: ["React.js", "TypeScript", "Tailwind CSS", "Responsive Design"],
+      demoLink: "https://bite-xpress-food-delivery-app.vercel.app/",
     },
-     {
-      title: 'SmartNepal',
-      description: 'A powerful web-based travel platform featuring AI-driven itineraries, real-time booking, and dynamic recommendations.',
+    {
+      title: "SmartNepal",
+      description:
+        "A powerful web-based travel platform featuring AI-driven itineraries, real-time booking, and dynamic recommendations.",
       image: `${smartnepal}`,
-      tags: ['React.js', 'JavaScript', 'Tailwind CSS', 'Responsive Design'],
-      demoLink: 'https://smartnepal.netlify.app/',
+      tags: ["React.js", "JavaScript", "Tailwind CSS", "Responsive Design"],
+      demoLink: "https://smartnepal.netlify.app/",
+    },
+    {
+      title: "Suwidha",
+      description:
+        "A cross-platform online marketplace mobile app built with React Native. It allows users to buy, sell, and explore products seamlessly on both Android and iOS.",
+      image: `${suwidha}`,
+      tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+      demoLink: "https://github.com/Shrawan3067/suwidha-olx.git",
+    },
+    {
+      title: "Calculators",
+      description:
+        "A dynamic web-based calculator platform offering a wide range of calculation tools across categories like finance, health, math, and fitness.",
+      image: `${allcalculator}`,
+      tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+      demoLink: "https://allcalculator-coral.vercel.app/",
+    },
+    {
+      title: "CareerConnect",
+      description:
+        "An inclusive and accessible job portal connecting talent with opportunities through a simple, user-friendly, and barrier-free experience.",
+      image: `${careerconnect}`,
+      tags: ["React.js", "TypeScript", "Tailwind CSS", "Responsive Design"],
+      demoLink: "https://accessible-job-portal.vercel.app/",
     },
     ,
-     {
-      title: 'CareerConnect',
-      description: 'An inclusive and accessible job portal connecting talent with opportunities through a simple, user-friendly, and barrier-free experience.',
-      image: `${careerconnect}`,
-      tags: ['React.js', 'TypeScript', 'Tailwind CSS', 'Responsive Design'],
-      demoLink: 'https://accessible-job-portal.vercel.app/',
-    },
     {
-      title: 'Calculators',
-      description: 'A dynamic web-based calculator platform offering a wide range of calculation tools across categories like finance, health, math, and fitness.',
-      image: `${allcalculator}`,
-      tags: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
-      demoLink: 'https://www.allcalculator.net',
-    },
-    {
-      title: 'Suwidha',
-      description: 'A cross-platform online marketplace mobile app built with React Native. It allows users to buy, sell, and explore products seamlessly on both Android and iOS.',
-      image: `${suwidha}`,
-      tags: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
-      demoLink: 'https://github.com/Shrawan3067/Suwidha---Online-Marketplace.git',
-    },
-    {
-      title: 'MediTrack',
-      description: 'A robust web-based medicine inventory system featuring CRUD operations, search/filter functionality, and data persistence.',
+      title: "MediTrack",
+      description:
+        "A robust web-based medicine inventory system featuring CRUD operations, search/filter functionality, and data persistence.",
       image: `${meditrack}`,
-      tags: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
-      demoLink: 'https://medi-track-one.vercel.app/',
-    }
+      tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+      demoLink: "https://medi-track-one.vercel.app/",
+    },
   ];
 
   return (
@@ -78,7 +84,9 @@ const Projects = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-primary mb-2">{project.title}</h3>
+                <h3 className="text-2xl font-bold text-primary mb-2">
+                  {project.title}
+                </h3>
                 <p className="text-gray mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map((tag, idx) => (
