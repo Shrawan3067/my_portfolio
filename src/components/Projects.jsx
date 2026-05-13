@@ -41,7 +41,7 @@ const Projects = () => {
         "A cross-platform online marketplace mobile app built with React Native. It allows users to buy, sell, and explore products seamlessly on both Android and iOS.",
       image: suwidha,
       tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
-      category: "Mobile App",
+      category: "Web App",
       demoLink: "https://ghar-se-deal.vercel.app/",
     },
     {
