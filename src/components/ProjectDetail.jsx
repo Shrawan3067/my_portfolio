@@ -628,7 +628,7 @@ const ProjectDetail = () => {
                     href={project.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors font-semibold"
+                    className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gray/30 text-black dark:bg-white/70 hover:dark:bg-white-20 rounded-lg hover:bg-gray-600 transition-colors font-semibold"
                   >
                     <i className="fab fa-github"></i>
                     View Code
