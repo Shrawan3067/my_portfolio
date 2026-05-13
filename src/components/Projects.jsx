@@ -7,12 +7,13 @@ import meditrack from "../assets/image.png";
 import sajilobhoj from "../assets/bitexpress2.png";
 import suwidha from "../assets/applogo.png";
 import focusflow from "../assets/focusflow.png";
+import financedashboard from "../assets/financedashboard.png";
 
 const Projects = () => {
   const [filter, setFilter] = useState("all");
 
   const projects = [
-        {
+    {
       id: "focusflow-ai",
       title: "FocusFlow AI",
       description:
@@ -30,10 +31,10 @@ const Projects = () => {
         "TypeScript",
       ],
       category: "Mobile App",
-      difficulty: "Advanced",
-      demoLink: "https://github.com/Shrawan3067/Focusyn---Productivity-Focus-Management.git",
+      demoLink:
+        "https://github.com/Shrawan3067/Focusyn---Productivity-Focus-Management.git",
     },
-        {
+    {
       id: "suwidha",
       title: "GharSeDeal",
       description:
@@ -41,7 +42,6 @@ const Projects = () => {
       image: suwidha,
       tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
       category: "Mobile App",
-      difficulty: "Intermediate",
       demoLink: "https://ghar-se-deal.vercel.app/",
     },
     {
@@ -50,14 +50,8 @@ const Projects = () => {
       description:
         "A user-friendly platform that helps people easily discover, order, and enjoy delicious meals from local restaurants, streamlining the food ordering experience with convenience and speed.",
       image: sajilobhoj,
-      tags: [
-        "React.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "Responsive Design",
-      ],
+      tags: ["React.js", "TypeScript", "Tailwind CSS", "Responsive Design"],
       category: "Web App",
-      difficulty: "Advanced",
       demoLink: "https://bite-xpress-food-delivery-app.vercel.app/",
     },
     {
@@ -66,14 +60,8 @@ const Projects = () => {
       description:
         "A powerful web-based travel platform featuring AI-driven itineraries, real-time booking, and dynamic recommendations.",
       image: smartnepal,
-      tags: [
-        "React.js",
-        "JavaScript",
-        "Tailwind CSS",
-        "Responsive Design",
-      ],
+      tags: ["React.js", "JavaScript", "Tailwind CSS", "Responsive Design"],
       category: "Web App",
-      difficulty: "Advanced",
       demoLink: "https://smartnepal.netlify.app/",
     },
     {
@@ -84,7 +72,6 @@ const Projects = () => {
       image: allcalculator,
       tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
       category: "Web App",
-      difficulty: "Intermediate",
       demoLink: "https://allcalculator-coral.vercel.app/",
     },
     {
@@ -95,8 +82,27 @@ const Projects = () => {
       image: meditrack,
       tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
       category: "Web App",
-      difficulty: "Intermediate",
       demoLink: "https://medi-track-one.vercel.app/",
+    },
+    {
+      id: "finance-dashboard",
+      title: "Finance Dashboard",
+      description:
+        "A comprehensive finance dashboard system with role-based access control, transaction management, and data analytics featuring real-time charts and user management.",
+      image: financedashboard,
+      tags: [
+        "React 18",
+        "React Router",
+        "Axios",
+        "Tailwind CSS",
+        "Recharts",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Mongoose",
+      ],
+      category: "Web App",
+      demoLink: "https://finance-dashboard-ashen-iota.vercel.app/login",
     },
   ];
 
@@ -106,54 +112,6 @@ const Projects = () => {
     if (filter === "all") return true;
     return project.category === filter;
   });
-
-  const getDifficultyColor = (difficulty) => {
-    switch (difficulty) {
-      case "Advanced":
-        return `
-          text-red-700 
-          dark:text-red-300
-          bg-red-100 
-          dark:bg-red-500/20
-          border 
-          border-red-200 
-          dark:border-red-500/30
-        `;
-
-      case "Intermediate":
-        return `
-          text-amber-700 
-          dark:text-yellow-300
-          bg-amber-100 
-          dark:bg-yellow-500/20
-          border 
-          border-amber-200 
-          dark:border-yellow-500/30
-        `;
-
-      case "Beginner":
-        return `
-          text-emerald-700 
-          dark:text-green-300
-          bg-emerald-100 
-          dark:bg-green-500/20
-          border 
-          border-emerald-200 
-          dark:border-green-500/30
-        `;
-
-      default:
-        return `
-          text-gray-700 
-          dark:text-gray-300
-          bg-gray-100 
-          dark:bg-gray-500/20
-          border 
-          border-gray-200 
-          dark:border-gray-500/30
-        `;
-    }
-  };
 
   return (
     <section
@@ -198,7 +156,7 @@ const Projects = () => {
 
         {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <div className="inline-flex bg-gray-100 dark:bg-gray-800 backdrop-blur-sm rounded-xl p-1 border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+          <div className="inline-flex gap-2 bg-gray-100 dark:bg-gray-800 backdrop-blur-sm rounded-xl p-1 border border-gray-200 dark:border-gray-700 transition-colors duration-300">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -206,7 +164,7 @@ const Projects = () => {
                 className={`px-5 py-2 rounded-lg font-medium transition-all duration-300 ${
                   filter === cat
                     ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
-                    : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-white dark:hover:bg-gray-700"
+                    : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-white dark:hover:bg-white/30 dark:hover:text-white"
                 }`}
               >
                 {cat === "all" ? "All" : cat}
@@ -250,17 +208,6 @@ const Projects = () => {
 
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                {/* Difficulty Badge */}
-                <div className="absolute top-4 left-4 z-10">
-                  <span
-                    className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm ${getDifficultyColor(
-                      project.difficulty
-                    )}`}
-                  >
-                    {project.difficulty}
-                  </span>
-                </div>
 
                 {/* Category Badge */}
                 <div className="absolute top-4 right-4 z-10">
@@ -351,7 +298,6 @@ const Projects = () => {
                         d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                       />
                     </svg>
-
                     Details
                   </Link>
 
@@ -395,59 +341,12 @@ const Projects = () => {
                         d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                       />
                     </svg>
-
                     Demo
                   </a>
                 </div>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* View All */}
-        <div className="text-center mt-16">
-          <p className="text-gray-500 dark:text-gray-400 mb-5 transition-colors duration-300">
-            Want to explore more projects?
-          </p>
-
-          <Link
-            to="/projects"
-            className="
-              inline-flex
-              items-center
-              gap-2
-              px-8
-              py-3
-              border-2
-              border-blue-500
-              text-blue-600
-              dark:text-blue-300
-              font-semibold
-              rounded-xl
-              transition-all
-              duration-300
-              hover:bg-blue-600
-              hover:text-white
-              hover:border-blue-600
-              hover:scale-105
-            "
-          >
-            <span>View All Projects</span>
-
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </Link>
         </div>
       </div>
     </section>

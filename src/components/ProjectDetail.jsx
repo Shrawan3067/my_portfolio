@@ -7,6 +7,8 @@ import meditrack from "../assets/image.png";
 import sajilobhoj from "../assets/sajilobhoj.png";
 import suwidha from "../assets/GharSeDeal.png";
 import focusflow from "../assets/focusflow.png";
+import financedashboard from "../assets/financedashboard.png";
+
 
 const ProjectDetail = () => {
   const { projectId } = useParams();
@@ -329,6 +331,71 @@ const ProjectDetail = () => {
         "Building realtime mobile apps",
         "Designing AI feedback loops",
         "Scaling background job processing"
+      ]
+    },
+    'finance-dashboard': {
+      title: "Finance Dashboard",
+      description: "A comprehensive finance dashboard system with role-based access control, transaction management, and data analytics featuring real-time charts and user management.",
+      longDescription: "Finance Dashboard is a full-stack financial data management system designed for organizations requiring secure, role-based access to financial data. The system provides three distinct user roles (Viewer, Analyst, Admin) with varying permission levels, comprehensive transaction management, real-time analytics with interactive charts, and robust user management capabilities. Built with modern web technologies, it ensures data security while providing an intuitive user experience.",
+      image: financedashboard,
+      tags: [
+        "React 18",
+        "React Router",
+        "Axios",
+        "Tailwind CSS",
+        "Recharts",
+        "Lucide React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Mongoose"
+      ],
+      demoLink: "https://finance-dashboard-ashen-iota.vercel.app/",
+      githubLink: "https://github.com/Shrawan3067/Finance_Dashboard.git",
+      category: "Financial Management System",
+      duration: "4 months",
+      teamSize: "3 developers",
+      status: "Completed",
+      startDate: "February 2024",
+      endDate: "June 2024",
+      features: [
+        "Role-Based Access Control (Admin, Analyst, Viewer)",
+        "Financial Transaction Management (CRUD operations)",
+        "Dashboard Analytics with interactive charts",
+        "User Management for administrators",
+        "Data Filtering & Pagination",
+        "Real-time data visualization",
+        "Secure authentication system",
+        "Responsive design for all devices"
+      ],
+      challenges: [
+        "Implementing secure role-based authorization",
+        "Managing complex permission hierarchies",
+        "Ensuring data consistency across roles",
+        "Optimizing performance for large datasets"
+      ],
+      solutions: [
+        "Created custom authorization middleware",
+        "Implemented role-based query parameter authentication",
+        "Used MongoDB aggregation for efficient data queries",
+        "Applied pagination and lazy loading techniques"
+      ],
+      technologies: {
+        frontend: ["React 18", "React Router", "Axios", "Tailwind CSS", "Recharts", "Lucide React", "React Hot Toast"],
+        backend: ["Node.js", "Express.js", "MongoDB", "Mongoose", "Express Validator", "CORS"],
+        tools: ["Vite", "Git", "Postman", "Render", "MongoDB Atlas"]
+      },
+      achievements: [
+        "Successfully deployed to production environment",
+        "Implemented comprehensive security measures",
+        "Achieved 99.9% uptime in production",
+        "Streamlined financial data management workflow"
+      ],
+      learnings: [
+        "Deep understanding of role-based access control",
+        "Expertise in full-stack development with React and Node.js",
+        "Knowledge of financial data security best practices",
+        "Skills in API design and documentation"
       ]
     }
   };

@@ -12,9 +12,9 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
 
   // EmailJS Config
-  const EMAILJS_SERVICE_ID = "service_r0s8gg8";
-  const EMAILJS_TEMPLATE_ID = "template_45lmbqc";
-  const EMAILJS_PUBLIC_KEY = "FTiA33MRy0dwlX-My";
+  const EMAILJS_SERVICE_ID = "service_ocscp6d";
+  const EMAILJS_TEMPLATE_ID = "template_rirl8u8";
+  const EMAILJS_PUBLIC_KEY = "dAuFx7WDwOVraGENc";
 
   const handleChange = (e) => {
     setFormData({
@@ -289,12 +289,12 @@ const Contact = () => {
                     </h4>
 
                     <a
-                      href="https://github.com/your-github"
+                      href="https://github.com/shrawan3067"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                     >
-                      github.com/your-username
+                      github.com/shrawan3067
                     </a>
                   </div>
                 </div>
