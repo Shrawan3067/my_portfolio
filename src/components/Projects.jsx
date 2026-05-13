@@ -5,7 +5,7 @@ import allcalculator from "../assets/allcalculator.png";
 import smartnepal from "../assets/smartnepal.png";
 import meditrack from "../assets/image.png";
 import sajilobhoj from "../assets/bitexpress2.png";
-import suwidha from "../assets/gharsedeal2.png";
+import suwidha from "../assets/Gharsedeal2.png";
 import focusflow from "../assets/focusflow.png";
 
 const Projects = () => {
