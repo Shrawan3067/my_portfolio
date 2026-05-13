@@ -43,96 +43,8 @@
     transition-all duration-300 border-none cursor-pointer
     hover:bg-primary-dark hover:-translate-y-1 hover:shadow-lg;
   }
-  
-  .skill-card {
-    @apply bg-dark-light p-8 rounded-2xl text-center transition-all duration-500 relative overflow-hidden 
-    border border-primary/10 z-[1] shadow-lg
-    hover:-translate-y-2.5 hover:scale-[1.03] hover:shadow-2xl;
-  }
-  
-  /* Fix the ::before pseudo-element - can't use @apply for complex CSS */
-  .skill-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 1rem;
-    border: 2px solid transparent;
-    background: linear-gradient(45deg, #6c63ff, #ff6584, #6c63ff) border-box;
-    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: destination-out;
-    mask-composite: exclude;
-    transition: all 0.3s ease;
-    opacity: 0;
-    pointer-events: none;
-  }
-  
-  .skill-card:hover::before {
-    opacity: 1;
-    animation: borderGlow 2s linear infinite;
-  }
-  
-  .skill-card i {
-    @apply text-5xl mb-6 text-primary transition-all duration-500 inline-block;
-  }
-  
-  .skill-card:hover i {
-    @apply scale-125 rotate-12 text-secondary;
-    animation: iconPulse 1.5s ease infinite;
-  }
-  
-  .skill-card h3 {
-    @apply text-2xl mb-4 transition-all duration-300;
-  }
-  
-  .skill-card:hover h3 {
-    @apply text-secondary -translate-y-1;
-  }
-  
-  .project-card {
-    @apply bg-dark-light overflow-hidden transition-all duration-300 
-    shadow-lg relative
-    hover:-translate-y-2.5 hover:shadow-2xl;
-    border-radius: 0 0 20px 20px;
-  }
-  
-  .project-card:hover .project-image img {
-    @apply scale-110;
-  }
-  
-  .project-content {
-    @apply p-6;
-  }
-  
-  .project-tags {
-    @apply flex flex-wrap gap-2 mb-6;
-  }
-  
-  .project-tag {
-    @apply bg-primary/20 text-primary px-3 py-1 rounded-full text-sm font-semibold;
-  }
-  
-  .timeline-content {
-    @apply p-5 bg-dark-light rounded-2xl shadow-lg flex justify-between gap-5;
-  }
-  
-  .education-card {
-    @apply bg-dark-light p-8 rounded-2xl text-center transition-all duration-500 relative overflow-hidden 
-    border border-primary/10 shadow-lg
-    hover:-translate-y-2.5 hover:scale-[1.03] hover:shadow-2xl;
-  }
-  
-  .contact-form {
-    @apply bg-dark-light p-6 rounded-2xl shadow-[0_0_10px_1px_rgb(139,137,137)];
-  }
-  
-  .form-control {
-    @apply w-full px-4 py-3 bg-dark border border-white/10 rounded-lg text-light text-base 
-    transition-all duration-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20;
-  }
-  
+
+    
   .section-title h2 {
     @apply text-4xl inline-block relative;
   }
@@ -222,8 +134,14 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Light mode specific styles */
@@ -232,8 +150,6 @@ body.light {
   color: var(--light) !important;
 }
 
-body.light .skill-card,
-body.light .project-card,
 body.light .timeline-content,
 body.light .education-card,
 body.light .contact-form,
@@ -242,10 +158,12 @@ body.light footer {
   color: var(--light) !important;
 }
 
-
-body.light .project-card a:hover {
-  color: var(--primary-dark) !important;
+body.light .social-link {
+  background-color: white !important;
+  border: 1px solid gray;
+  color: gray;
 }
+
 
 body.light .form-control {
   background-color: white !important;
@@ -272,6 +190,11 @@ body.light .bg-dark-light {
 body.light .text-light {
   color: var(--light) !important;
 }
+
+body.light .about-tab {
+  background-color: white !important;
+}
+
 
 /* Smooth transitions for theme switching */
 * {

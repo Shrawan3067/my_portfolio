@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
+  const location = useLocation();
 
   const navLinks = [
     { name: 'Home', href: '#home' },
@@ -34,9 +36,15 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-8">
         <nav className="flex justify-between items-center">
           {/* Logo */}
-          <a href="#home" className="text-2xl md:text-3xl font-bold text-primary">
-            Shrawan <span className="text-secondary">Sah</span>
-          </a>
+          {location.pathname === '/' ? (
+            <a href="#home" className="text-2xl md:text-3xl font-bold text-primary">
+              Shrawan <span className="text-secondary">Sah</span>
+            </a>
+          ) : (
+            <Link to="/" className="text-2xl md:text-3xl font-bold text-primary">
+              Shrawan <span className="text-secondary">Sah</span>
+            </Link>
+          )}
 
           {/* Desktop Navbar */}
           <ul className={`hidden md:flex space-x-8 ${isDarkMode ? 'text-light' : 'text-dark'}`}>

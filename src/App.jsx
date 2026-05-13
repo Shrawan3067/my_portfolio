@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -10,8 +11,8 @@ import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
+import ProjectDetail from './components/ProjectDetail';
 import { ThemeProvider } from './context/ThemeContext';
-import './App.css';
 
 function App() {
   useEffect(() => {
@@ -66,21 +67,30 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-dark text-light transition-colors duration-300">
-        <Header />
-        <main>
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Experience />
-          <CodingProfile />
-          <Education />
-          <Contact />
-        </main>
-        <Footer />
-        <BackToTop />
-      </div>
+      <Router>
+        <div className="min-h-screen bg-dark text-light transition-colors duration-300">
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={
+                <>
+                  <Hero />
+                  <About />
+                  <Skills />
+                  <Projects />
+                  <Experience />
+                  <CodingProfile />
+                  <Education />
+                  <Contact />
+                </>
+              } />
+              <Route path="/project/:projectId" element={<ProjectDetail />} />
+            </Routes>
+          </main>
+          <Footer />
+          <BackToTop />
+        </div>
+      </Router>
     </ThemeProvider>
   );
 }
