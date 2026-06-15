@@ -62,9 +62,9 @@ const BackToTop = () => {
         {/* Bubbles */}
         {progress > 30 && (
           <>
-            <div className="absolute left-3 w-1 h-1 bg-white/30 rounded-full animate-bubble" style={{ bottom: `${progress - 10}%` }} />
-            <div className="absolute right-4 w-1.5 h-1.5 bg-white/40 rounded-full animate-bubble delay-300" style={{ bottom: `${progress - 20}%` }} />
-            <div className="absolute left-6 w-1 h-1 bg-white/20 rounded-full animate-bubble delay-500" style={{ bottom: `${progress - 15}%` }} />
+            <div className="absolute left-3 w-1 h-1 bg-light/30 rounded-full animate-bubble" style={{ bottom: `${progress - 10}%` }} />
+            <div className="absolute right-4 w-1.5 h-1.5 bg-light/40 rounded-full animate-bubble delay-300" style={{ bottom: `${progress - 20}%` }} />
+            <div className="absolute left-6 w-1 h-1 bg-light/20 rounded-full animate-bubble delay-500" style={{ bottom: `${progress - 15}%` }} />
           </>
         )}
       </div>

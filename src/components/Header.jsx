@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
     { name: 'Home', href: '#home' },
@@ -13,50 +22,49 @@ const Header = () => {
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Experience', href: '#experience' },
-    { name: 'Coding Profile', href: '#coding-profile' },
-    { name: 'Certifications', href: '#education' },
     { name: 'Contact', href: '#contact' },
   ];
 
   const handleClick = (e, href) => {
     e.preventDefault();
     const element = document.querySelector(href);
-    element.scrollIntoView({ behavior: 'smooth' });
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
     setIsMenuOpen(false);
   };
 
   return (
     <header
-      className={`py-4 sticky top-0 z-50 border-b ${
-        isDarkMode
-          ? 'bg-dark border-white/10'
-          : 'bg-white border-black/10'
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? 'py-3 bg-dark/80 backdrop-blur-lg border-b border-gray/20 shadow-lg'
+          : 'py-5 bg-transparent border-transparent'
       }`}
     >
       <div className="container mx-auto px-4 md:px-8">
         <nav className="flex justify-between items-center">
           {/* Logo */}
           {location.pathname === '/' ? (
-            <a href="#home" className="text-2xl md:text-3xl font-bold text-primary">
-              Shrawan <span className="text-secondary">Sah</span>
+            <a href="#home" className="text-2xl font-black text-light tracking-tight group">
+              Shrawan <span className="text-primary group-hover:text-secondary transition-colors duration-300">Sah</span>
             </a>
           ) : (
-            <Link to="/" className="text-2xl md:text-3xl font-bold text-primary">
-              Shrawan <span className="text-secondary">Sah</span>
+            <Link to="/" className="text-2xl font-black text-light tracking-tight group">
+              Shrawan <span className="text-primary group-hover:text-secondary transition-colors duration-300">Sah</span>
             </Link>
           )}
 
           {/* Desktop Navbar */}
-          <ul className={`hidden md:flex space-x-8 ${isDarkMode ? 'text-light' : 'text-dark'}`}>
+          <ul className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <li key={link.name}>
                 <a
                   href={link.href}
                   onClick={(e) => handleClick(e, link.href)}
-                  className="font-medium relative group transition-colors duration-300 hover:text-primary"
+                  className="text-sm font-medium text-gray hover:text-primary transition-colors duration-300"
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                 </a>
               </li>
             ))}
@@ -65,34 +73,34 @@ const Header = () => {
             <li>
               <button
                 onClick={toggleTheme}
-                className="h-8 w-8 flex items-center justify-center rounded-full bg-dark-light hover:bg-primary/20 transition-colors duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-dark-light/50 border border-gray/20 hover:bg-primary/10 hover:border-primary/50 hover:text-primary text-gray transition-all duration-300"
                 aria-label="Toggle theme"
               >
                 {isDarkMode ? (
-                  <i className="fas fa-sun text-yellow-400 text-xl"></i>
+                  <i className="fas fa-sun text-yellow-400"></i>
                 ) : (
-                  <i className="fas fa-moon text-primary text-xl"></i>
+                  <i className="fas fa-moon text-indigo-600"></i>
                 )}
               </button>
             </li>
           </ul>
 
           {/* Mobile Buttons */}
-          <div className="flex items-center space-x-4 md:hidden">
+          <div className="flex items-center space-x-3 md:hidden">
             <button
               onClick={toggleTheme}
-              className="h-10 w-10 flex items-center justify-center rounded-full bg-dark-light"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-dark-light/50 border border-gray/20 hover:bg-primary/10 text-gray"
               aria-label="Toggle theme"
             >
               {isDarkMode ? (
-                <i className="fas fa-sun text-yellow-400 text-lg"></i>
+                <i className="fas fa-sun text-yellow-400"></i>
               ) : (
-                <i className="fas fa-moon text-primary text-lg"></i>
+                <i className="fas fa-moon text-indigo-600"></i>
               )}
             </button>
 
             <button
-              className="text-2xl"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-dark-light/50 border border-gray/20 text-gray"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -102,25 +110,21 @@ const Header = () => {
         </nav>
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden mt-4">
-            <ul className={`rounded-lg p-4 space-y-4 ${
-              isDarkMode ? 'bg-dark-light text-light' : 'bg-gray-100 text-dark'
-            }`}>
-              {navLinks.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleClick(e, link.href)}
-                    className="block py-2 px-4 rounded hover:bg-primary/10 transition-colors duration-300"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <div className={`md:hidden overflow-hidden transition-all duration-300 ${isMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
+          <ul className="bg-dark-light/95 backdrop-blur-xl border border-gray/20 rounded-2xl p-4 flex flex-col space-y-2 shadow-xl">
+            {navLinks.map((link) => (
+              <li key={link.name}>
+                <a
+                  href={link.href}
+                  onClick={(e) => handleClick(e, link.href)}
+                  className="block py-3 px-4 rounded-xl text-gray hover:text-primary hover:bg-primary/10 transition-colors duration-300 font-medium"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </header>
   );

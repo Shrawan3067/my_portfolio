@@ -1,10 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --primary: 79 70 229;
+    --primary-dark: 67 56 202;
+    --secondary: 6 182 212;
+    --dark: 15 23 42;
+    --dark-light: 30 41 59;
+    --light: 248 250 252;
+    --gray: 148 163 184;
+  }
+
+  .light {
+    --primary: 79 70 229;
+    --primary-dark: 67 56 202;
+    --secondary: 6 182 212;
+    --dark: 248 250 252;
+    --dark-light: 255 255 255;
+    --light: 15 23 42;
+    --gray: 100 116 139;
+  }
+
   * {
     @apply m-0 p-0;
     box-sizing: border-box;
@@ -15,18 +35,8 @@
   }
 
   body {
-    @apply bg-dark text-light font-poppins leading-relaxed overflow-x-hidden;
-  }
-
-  /* Light mode CSS variables */
-  .light {
-    --primary: #6c63ff;
-    --primary-dark: #564fcc;
-    --secondary: #ff6584;
-    --dark: #f8f9fa;
-    --dark-light: #ffffff;
-    --light: #121212;
-    --gray: #666666;
+    @apply bg-dark text-light leading-relaxed overflow-x-hidden transition-colors duration-300;
+    font-family: 'Inter', sans-serif;
   }
 }
 
@@ -39,14 +49,19 @@
   }
 
   .btn {
-    @apply inline-block bg-primary text-white px-8 py-4 rounded-[30px] font-semibold no-underline 
-    transition-all duration-300 border-none cursor-pointer
-    hover:bg-primary-dark hover:-translate-y-1 hover:shadow-lg;
+    @apply inline-flex items-center justify-center bg-primary text-white px-8 py-4 rounded-full font-semibold no-underline 
+    transition-all duration-300 border border-transparent cursor-pointer
+    hover:bg-primary-dark hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/30;
   }
 
-    
+  .btn-outline {
+    @apply inline-flex items-center justify-center bg-transparent text-primary px-8 py-4 rounded-full font-semibold no-underline 
+    transition-all duration-300 border border-primary cursor-pointer
+    hover:bg-primary hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/30;
+  }
+
   .section-title h2 {
-    @apply text-4xl inline-block relative;
+    @apply text-4xl inline-block relative font-bold tracking-tight;
   }
   
   .section-title h2::after {
@@ -56,20 +71,12 @@
     left: 15%;
     width: 70%;
     height: 3px;
-    background: linear-gradient(90deg, #6c63ff, #ff6584);
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
     border-radius: 3px;
   }
   
-  .hero h1::after {
-    content: '|';
-    position: absolute;
-    right: -10px;
-    animation: blink 0.7s infinite;
-    color: #6c63ff;
-  }
-  
   .nav-links a {
-    @apply relative;
+    @apply relative font-medium transition-colors hover:text-primary;
   }
   
   .nav-links a::after {
@@ -77,7 +84,7 @@
     position: absolute;
     width: 0;
     height: 2px;
-    background: #6c63ff;
+    background: var(--primary);
     bottom: -5px;
     left: 0;
     transition: width 0.3s;
@@ -86,6 +93,10 @@
   .nav-links a:hover::after {
     width: 100%;
   }
+
+  .glass-card {
+    @apply bg-dark-light/80 backdrop-blur-md border border-gray/20 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:border-primary/50;
+  }
 }
 
 @layer utilities {
@@ -93,21 +104,10 @@
     animation: fadeIn 1s ease forwards;
   }
   
-  .delay-1 {
-    animation-delay: 0.2s;
-  }
-  
-  .delay-2 {
-    animation-delay: 0.4s;
-  }
-  
-  .delay-3 {
-    animation-delay: 0.6s;
-  }
-  
-  .delay-4 {
-    animation-delay: 0.8s;
-  }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
 }
 
 /* Custom animations */
@@ -144,57 +144,50 @@
   }
 }
 
-/* Light mode specific styles */
+/* Light mode overrides handled by CSS variables */
 body.light {
   background-color: var(--dark) !important;
   color: var(--light) !important;
 }
 
+body.light .bg-dark {
+  background-color: var(--dark) !important;
+}
+
+body.light .bg-dark-light,
 body.light .timeline-content,
 body.light .education-card,
 body.light .contact-form,
 body.light footer {
   background-color: var(--dark-light) !important;
   color: var(--light) !important;
-}
-
-body.light .social-link {
-  background-color: white !important;
-  border: 1px solid gray;
-  color: gray;
-}
-
-
-body.light .form-control {
-  background-color: white !important;
-  color: var(--light) !important;
-  border: 1px solid #e5e7eb !important;
-}
-
-/* Apply the light mode variables */
-body.light {
-  --tw-bg-opacity: 1;
-  background-color: rgb(var(--dark) / var(--tw-bg-opacity));
-  color: rgb(var(--light) / 1);
-}
-
-/* For elements that need specific colors in light mode */
-body.light .bg-dark {
-  background-color: var(--dark) !important;
-}
-
-body.light .bg-dark-light {
-  background-color: var(--dark-light) !important;
+  border-color: #e2e8f0;
 }
 
 body.light .text-light {
   color: var(--light) !important;
 }
 
-body.light .about-tab {
-  background-color: white !important;
+body.light .text-gray {
+  color: var(--gray) !important;
 }
 
+body.light .social-link {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+}
+
+body.light .form-control {
+  background-color: #ffffff !important;
+  color: var(--light) !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+body.light .glass-card {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(0, 0, 0, 0.05);
+}
 
 /* Smooth transitions for theme switching */
 * {

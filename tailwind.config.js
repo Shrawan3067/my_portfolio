@@ -8,16 +8,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#6c63ff',
-        'primary-dark': '#564fcc',
-        secondary: '#ff6584',
-        dark: '#121212',
-        'dark-light': '#1e1e1e',
-        light: '#f8f9fa',
-        gray: '#858a8a',
+        primary: 'rgb(var(--primary) / <alpha-value>)',
+        'primary-dark': 'rgb(var(--primary-dark) / <alpha-value>)',
+        secondary: 'rgb(var(--secondary) / <alpha-value>)',
+        dark: 'rgb(var(--dark) / <alpha-value>)',
+        'dark-light': 'rgb(var(--dark-light) / <alpha-value>)',
+        light: 'rgb(var(--light) / <alpha-value>)',
+        gray: 'rgb(var(--gray) / <alpha-value>)',
       },
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -16,82 +17,53 @@ import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
   useEffect(() => {
-    // Load Font Awesome CSS from CDN so <i className="fas/fa..."> icons render
+    // Load Font Awesome CSS from CDN
     const faLink = document.createElement('link');
     faLink.rel = 'stylesheet';
     faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
     faLink.crossOrigin = 'anonymous';
     document.head.appendChild(faLink);
 
-    // Add custom CSS for light mode
-    const style = document.createElement('style');
-    style.innerHTML = `
-      .light {
-        --primary: #6c63ff;
-        --primary-dark: #564fcc;
-        --secondary: #ff6584;
-        --dark: #f8f9fa;
-        --dark-light: #ffffff;
-        --light: #121212;
-        --gray: #666666;
-      }
-      
-      body.light {
-        background-color: var(--dark);
-        color: var(--light);
-      }
-      
-      body.light .skill-card,
-      body.light .project-card,
-      body.light .timeline-content,
-      body.light .education-card,
-      body.light .contact-form,
-      body.light footer {
-        background-color: var(--dark-light);
-        color: var(--light);
-      }
-      
-      body.light .form-control {
-        background-color: white;
-        color: var(--light);
-        border: 1px solid #e5e7eb;
-      }
-    `;
-    document.head.appendChild(style);
-
     return () => {
       document.head.removeChild(faLink);
-      document.head.removeChild(style);
     };
   }, []);
 
   return (
-    <ThemeProvider>
-      <Router>
-        <div className="min-h-screen bg-dark text-light transition-colors duration-300">
-          <Header />
-          <main>
-            <Routes>
-              <Route path="/" element={
-                <>
-                  <Hero />
-                  <About />
-                  <Skills />
-                  <Projects />
-                  <Experience />
-                  <CodingProfile />
-                  <Education />
-                  <Contact />
-                </>
-              } />
-              <Route path="/project/:projectId" element={<ProjectDetail />} />
-            </Routes>
-          </main>
-          <Footer />
-          <BackToTop />
-        </div>
-      </Router>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider>
+        <Helmet>
+          <title>Shrawan Sah | Premium Portfolio</title>
+          <meta name="description" content="Portfolio of Shrawan Sah, a Full Stack Developer specializing in premium, high-performance web applications." />
+          <meta property="og:title" content="Shrawan Sah | Premium Portfolio" />
+          <meta property="og:description" content="Portfolio of Shrawan Sah, a Full Stack Developer specializing in premium, high-performance web applications." />
+        </Helmet>
+        <Router>
+          <div className="min-h-screen bg-dark text-light transition-colors duration-300 font-inter">
+            <Header />
+            <main>
+              <Routes>
+                <Route path="/" element={
+                  <>
+                    <Hero />
+                    <About />
+                    <Skills />
+                    <Projects />
+                    <Experience />
+                    <CodingProfile />
+                    <Education />
+                    <Contact />
+                  </>
+                } />
+                <Route path="/project/:projectId" element={<ProjectDetail />} />
+              </Routes>
+            </main>
+            <Footer />
+            <BackToTop />
+          </div>
+        </Router>
+      </ThemeProvider>
+    </HelmetProvider>
   );
 }
 

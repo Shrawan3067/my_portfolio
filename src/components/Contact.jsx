@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ const Contact = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [toast, setToast] = useState({ visible: false, type: "", message: "" });
 
   // EmailJS Config
   const EMAILJS_SERVICE_ID = "service_ocscp6d";
@@ -24,53 +26,20 @@ const Contact = () => {
   };
 
   const showToast = (type, message) => {
-    const toast = document.createElement("div");
-
-    toast.className = `
-      fixed top-5 right-5 z-50 px-6 py-4 rounded-2xl shadow-2xl
-      backdrop-blur-xl border flex items-center gap-3
-      animate-slide-in
-      ${
-        type === "success"
-          ? "bg-emerald-500/90 border-emerald-400 text-white"
-          : "bg-red-500/90 border-red-400 text-white"
-      }
-    `;
-
-    toast.innerHTML = `
-      <div class="text-lg">
-        ${
-          type === "success"
-            ? '<i class="fas fa-check-circle"></i>'
-            : '<i class="fas fa-exclamation-circle"></i>'
-        }
-      </div>
-      <div class="font-medium">${message}</div>
-    `;
-
-    document.body.appendChild(toast);
-
+    setToast({ visible: true, type, message });
     setTimeout(() => {
-      toast.classList.add("animate-fade-out");
-
-      setTimeout(() => {
-        if (document.body.contains(toast)) {
-          document.body.removeChild(toast);
-        }
-      }, 500);
+      setToast({ visible: false, type: "", message: "" });
     }, 5000);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setLoading(true);
 
     try {
       emailjs.init(EMAILJS_PUBLIC_KEY);
 
       const now = new Date();
-
       const timeString = now.toLocaleString("en-IN", {
         timeZone: "Asia/Kolkata",
         year: "numeric",
@@ -128,90 +97,94 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="
-        py-24
-        relative
-        overflow-hidden
-        bg-white
-        dark:bg-[#0B1120]
-        transition-colors
-        duration-300
-      "
+      className="py-24 relative overflow-hidden bg-dark transition-colors duration-300"
     >
+      {/* Toast Notification */}
+      <AnimatePresence>
+        {toast.visible && (
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 50 }}
+            className={`fixed top-24 right-5 z-50 px-6 py-4 rounded-2xl shadow-2xl backdrop-blur-xl border flex items-center gap-3 ${
+              toast.type === "success"
+                ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400"
+                : "bg-red-500/10 border-red-500/20 text-red-400"
+            }`}
+          >
+            <div className="text-lg">
+              {toast.type === "success" ? (
+                <i className="fas fa-check-circle"></i>
+              ) : (
+                <i className="fas fa-exclamation-circle"></i>
+              )}
+            </div>
+            <div className="font-medium text-light">{toast.message}</div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-400/20 dark:bg-blue-500/10 rounded-full blur-3xl"></div>
-
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-400/20 dark:bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[100px]"></div>
       </div>
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-blue-600 dark:text-blue-300 font-semibold text-lg uppercase tracking-wider mb-4">
-            Contact Me
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-primary font-semibold text-lg uppercase tracking-wider mb-4">
+              Contact Me
+            </p>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Get In Touch
-            </span>
-          </h2>
+            <div className="section-title mb-6">
+              <h2>Get In Touch</h2>
+            </div>
 
-          <div className="w-32 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
-
-          <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mt-5">
-            Have a project idea, internship opportunity, or collaboration in
-            mind? Feel free to connect with me.
-          </p>
+            <p className="text-lg text-gray max-w-2xl mx-auto mt-5 font-light">
+              Have a project idea, internship opportunity, or collaboration in
+              mind? Feel free to connect with me.
+            </p>
+          </motion.div>
         </div>
 
         {/* Grid */}
         <div className="grid lg:grid-cols-2 gap-10 max-w-7xl mx-auto">
           {/* Contact Info */}
-          <div
-            className="
-              group
-              relative
-              bg-white
-              dark:bg-[#111827]
-              rounded-3xl
-              p-8
-              border
-              border-gray-100
-              dark:border-gray-800
-              transition-all
-              duration-300
-              hover:-translate-y-2
-              hover:border-blue-300/40
-              dark:hover:border-blue-500/30
-              hover:shadow-[0_20px_60px_rgba(59,130,246,0.15)]
-              dark:hover:shadow-[0_20px_60px_rgba(37,99,235,0.25)]
-            "
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="glass-card p-8 group relative"
           >
             {/* Hover Gradient */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
             <div className="relative z-10">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+              <h3 className="text-2xl font-bold text-light mb-8 group-hover:text-primary transition-colors">
                 Contact Information
               </h3>
 
               <div className="space-y-8">
                 {/* Email */}
                 <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-500/10 flex items-center justify-center text-blue-600 dark:text-blue-300 border border-blue-100 dark:border-blue-500/20">
+                  <div className="w-14 h-14 rounded-2xl bg-dark-light/50 flex items-center justify-center text-primary border border-gray/20 group-hover:bg-primary/10 transition-colors">
                     <i className="fas fa-envelope text-xl"></i>
                   </div>
-
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                    <h4 className="text-lg font-semibold text-light mb-1">
                       Email
                     </h4>
-
                     <a
                       href="mailto:shrawansah3067@gmail.com"
-                      className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                      className="text-gray hover:text-primary transition-colors font-light"
                     >
                       shrawansah3067@gmail.com
                     </a>
@@ -220,18 +193,16 @@ const Contact = () => {
 
                 {/* Phone */}
                 <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 rounded-2xl bg-purple-50 dark:bg-purple-500/10 flex items-center justify-center text-purple-600 dark:text-purple-300 border border-purple-100 dark:border-purple-500/20">
+                  <div className="w-14 h-14 rounded-2xl bg-dark-light/50 flex items-center justify-center text-secondary border border-gray/20 group-hover:bg-secondary/10 transition-colors">
                     <i className="fas fa-phone text-xl"></i>
                   </div>
-
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                    <h4 className="text-lg font-semibold text-light mb-1">
                       Phone
                     </h4>
-
                     <a
                       href="tel:+918360705978"
-                      className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
+                      className="text-gray hover:text-secondary transition-colors font-light"
                     >
                       +91 83607 05978
                     </a>
@@ -240,16 +211,14 @@ const Contact = () => {
 
                 {/* Location */}
                 <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-300 border border-emerald-100 dark:border-emerald-500/20">
+                  <div className="w-14 h-14 rounded-2xl bg-dark-light/50 flex items-center justify-center text-emerald-400 border border-gray/20 group-hover:bg-emerald-500/10 transition-colors">
                     <i className="fas fa-map-marker-alt text-xl"></i>
                   </div>
-
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                    <h4 className="text-lg font-semibold text-light mb-1">
                       Location
                     </h4>
-
-                    <p className="text-gray-600 dark:text-gray-400">
+                    <p className="text-gray font-light">
                       Jalandhar, Punjab 144401
                     </p>
                   </div>
@@ -257,20 +226,18 @@ const Contact = () => {
 
                 {/* LinkedIn */}
                 <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 rounded-2xl bg-sky-50 dark:bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-300 border border-sky-100 dark:border-sky-500/20">
+                  <div className="w-14 h-14 rounded-2xl bg-dark-light/50 flex items-center justify-center text-blue-400 border border-gray/20 group-hover:bg-blue-500/10 transition-colors">
                     <i className="fab fa-linkedin text-xl"></i>
                   </div>
-
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                    <h4 className="text-lg font-semibold text-light mb-1">
                       LinkedIn
                     </h4>
-
                     <a
                       href="https://www.linkedin.com/in/shrawansah/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-600 dark:text-gray-400 hover:text-sky-600 dark:hover:text-sky-300 transition-colors"
+                      className="text-gray hover:text-blue-400 transition-colors font-light"
                     >
                       linkedin.com/in/shrawansah
                     </a>
@@ -279,20 +246,18 @@ const Contact = () => {
 
                 {/* GitHub */}
                 <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 rounded-2xl bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600">
+                  <div className="w-14 h-14 rounded-2xl bg-dark-light/50 flex items-center justify-center text-gray border border-gray/20 group-hover:bg-gray/10 transition-colors">
                     <i className="fab fa-github text-xl"></i>
                   </div>
-
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                    <h4 className="text-lg font-semibold text-light mb-1">
                       GitHub
                     </h4>
-
                     <a
                       href="https://github.com/shrawan3067"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                      className="text-gray hover:text-light transition-colors font-light"
                     >
                       github.com/shrawan3067
                     </a>
@@ -300,36 +265,23 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact Form */}
-          <div
-            className="
-              group
-              relative
-              bg-white
-              dark:bg-[#111827]
-              rounded-3xl
-              p-8
-              border
-              border-gray-100
-              dark:border-gray-800
-              transition-all
-              duration-300
-              hover:-translate-y-2
-              hover:border-blue-300/40
-              dark:hover:border-blue-500/30
-              hover:shadow-[0_20px_60px_rgba(59,130,246,0.15)]
-              dark:hover:shadow-[0_20px_60px_rgba(37,99,235,0.25)]
-            "
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="glass-card p-8 group relative"
           >
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-[0.02] transition-opacity duration-300"></div>
 
             <form
               onSubmit={handleSubmit}
               className="relative z-10"
             >
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+              <h3 className="text-2xl font-bold text-light mb-8 group-hover:text-primary transition-colors">
                 Send Message
               </h3>
 
@@ -338,11 +290,10 @@ const Contact = () => {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+                    className="block text-sm font-semibold text-gray-300 mb-2"
                   >
                     Your Name *
                   </label>
-
                   <input
                     type="text"
                     id="name"
@@ -351,18 +302,17 @@ const Contact = () => {
                     placeholder="John Doe"
                     required
                     disabled={loading}
-                    className="form-control"
+                    className="w-full px-4 py-3 rounded-xl bg-dark/50 border border-gray/20 text-light placeholder-gray focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 disabled:opacity-50"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+                    className="block text-sm font-semibold text-gray-300 mb-2"
                   >
                     Your Email *
                   </label>
-
                   <input
                     type="email"
                     id="email"
@@ -371,7 +321,7 @@ const Contact = () => {
                     placeholder="john@example.com"
                     required
                     disabled={loading}
-                    className="form-control"
+                    className="w-full px-4 py-3 rounded-xl bg-dark/50 border border-gray/20 text-light placeholder-gray focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 disabled:opacity-50"
                   />
                 </div>
               </div>
@@ -380,11 +330,10 @@ const Contact = () => {
               <div className="mb-6">
                 <label
                   htmlFor="title"
-                  className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+                  className="block text-sm font-semibold text-gray-300 mb-2"
                 >
                   Subject *
                 </label>
-
                 <input
                   type="text"
                   id="title"
@@ -393,7 +342,7 @@ const Contact = () => {
                   placeholder="Project Inquiry / Job Opportunity"
                   required
                   disabled={loading}
-                  className="form-control"
+                  className="w-full px-4 py-3 rounded-xl bg-dark/50 border border-gray/20 text-light placeholder-gray focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 disabled:opacity-50"
                 />
               </div>
 
@@ -401,11 +350,10 @@ const Contact = () => {
               <div className="mb-8">
                 <label
                   htmlFor="message"
-                  className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+                  className="block text-sm font-semibold text-gray-300 mb-2"
                 >
                   Message *
                 </label>
-
                 <textarea
                   id="message"
                   value={formData.message}
@@ -414,10 +362,9 @@ const Contact = () => {
                   placeholder="Hello Shrawan, I would like to discuss..."
                   required
                   disabled={loading}
-                  className="form-control resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-dark/50 border border-gray/20 text-light placeholder-gray focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 disabled:opacity-50 resize-none"
                 ></textarea>
-
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">
+                <p className="text-sm text-gray mt-3 font-light">
                   Please provide details about your project or inquiry.
                 </p>
               </div>
@@ -426,116 +373,28 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="
-                  w-full
-                  relative
-                  overflow-hidden
-                  px-6
-                  py-4
-                  rounded-2xl
-                  bg-gradient-to-r
-                  from-blue-600
-                  to-purple-600
-                  text-white
-                  font-semibold
-                  shadow-lg
-                  transition-all
-                  duration-300
-                  hover:scale-[1.02]
-                  hover:shadow-blue-500/30
-                  disabled:opacity-60
-                  disabled:cursor-not-allowed
-                "
+                className="btn w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                <span className="relative z-10 flex items-center justify-center">
-                  {loading ? (
-                    <>
-                      <i className="fas fa-spinner fa-spin mr-3"></i>
-                      Sending Message...
-                    </>
-                  ) : (
-                    <>
-                      <i className="fas fa-paper-plane mr-3"></i>
-                      Send Message
-                    </>
-                  )}
-                </span>
+                {loading ? (
+                  <>
+                    <i className="fas fa-spinner fa-spin mr-3"></i>
+                    Sending Message...
+                  </>
+                ) : (
+                  <>
+                    <i className="fas fa-paper-plane mr-3"></i>
+                    Send Message
+                  </>
+                )}
               </button>
 
-              <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-4">
+              <p className="text-sm text-gray text-center mt-4 font-light">
                 * Required fields
               </p>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
-
-      <style jsx>{`
-        .animate-slide-in {
-          animation: slideIn 0.35s ease-out;
-        }
-
-        .animate-fade-out {
-          animation: fadeOut 0.5s ease-out forwards;
-        }
-
-        @keyframes slideIn {
-          from {
-            transform: translateX(100%);
-            opacity: 0;
-          }
-
-          to {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
-
-        @keyframes fadeOut {
-          from {
-            opacity: 1;
-          }
-
-          to {
-            opacity: 0;
-          }
-        }
-
-        .form-control {
-          width: 100%;
-          padding: 0.95rem 1rem;
-          border-radius: 1rem;
-          border: 1px solid rgb(229 231 235);
-          background: white;
-          color: rgb(17 24 39);
-          transition: all 0.3s ease;
-        }
-
-        .dark .form-control {
-          background: rgba(17, 24, 39, 0.9);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          color: white;
-        }
-
-        .form-control:focus {
-          outline: none;
-          border-color: rgb(59 130 246);
-          box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
-        }
-
-        .dark .form-control:focus {
-          border-color: rgb(96 165 250);
-          box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.15);
-        }
-
-        .form-control::placeholder {
-          color: rgb(156 163 175);
-        }
-
-        .dark .form-control::placeholder {
-          color: rgba(255, 255, 255, 0.4);
-        }
-      `}</style>
     </section>
   );
 };

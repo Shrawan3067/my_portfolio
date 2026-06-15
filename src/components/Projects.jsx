@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 import allcalculator from "../assets/allcalculator.png";
 import smartnepal from "../assets/smartnepal.png";
@@ -116,55 +117,49 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="
-        py-24
-        relative
-        overflow-hidden
-        bg-white
-        dark:bg-[#0B1120]
-        transition-colors
-        duration-300
-      "
+      className="py-24 relative overflow-hidden bg-dark transition-colors duration-300"
     >
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-400/20 dark:bg-blue-500/10 rounded-full blur-3xl"></div>
-
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-400/20 dark:bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[100px]"></div>
       </div>
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <p className="text-blue-600 dark:text-blue-300 font-semibold text-lg uppercase tracking-wider mb-4">
-            Featured Work
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-primary font-semibold text-lg uppercase tracking-wider mb-4">
+              Featured Work
+            </p>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              My Projects
-            </span>
-          </h2>
+            <div className="section-title mb-6">
+              <h2>My Projects</h2>
+            </div>
 
-          <div className="w-32 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
-
-          <p className="text-gray-500 dark:text-gray-400 mt-4 max-w-2xl mx-auto transition-colors duration-300">
-            Explore my latest projects showcasing modern web development and
-            design expertise
-          </p>
+            <p className="text-gray mt-4 max-w-2xl mx-auto text-lg font-light">
+              Explore my latest projects showcasing modern web development and
+              design expertise
+            </p>
+          </motion.div>
         </div>
 
         {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <div className="inline-flex gap-2 bg-gray-100 dark:bg-gray-800 backdrop-blur-sm rounded-xl p-1 border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+          <div className="inline-flex gap-2 bg-dark-light/50 backdrop-blur-md rounded-2xl p-1 border border-gray/20">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-5 py-2 rounded-lg font-medium transition-all duration-300 ${
+                className={`px-6 py-2.5 rounded-xl font-medium transition-all duration-300 ${
                   filter === cat
-                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
-                    : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-white dark:hover:bg-white/30 dark:hover:text-white"
+                    ? "bg-primary text-white shadow-lg shadow-primary/30"
+                    : "text-gray hover:text-light hover:bg-dark-light"
                 }`}
               >
                 {cat === "all" ? "All" : cat}
@@ -174,180 +169,94 @@ const Projects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <div
-              key={project.id}
-              className="
-                group
-                relative
-                bg-white
-                dark:bg-[#111827]
-                rounded-2xl
-                overflow-hidden
-                border
-                border-gray-100
-                dark:border-gray-800
-                transition-all
-                duration-300
-                hover:-translate-y-2
-                hover:border-blue-300/40
-                dark:hover:border-blue-500/30
-                hover:shadow-[0_20px_60px_rgba(59,130,246,0.15)]
-                dark:hover:shadow-[0_20px_60px_rgba(37,99,235,0.25)]
-              "
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              {/* Image */}
-              <div className="relative h-52 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+        <motion.div 
+          layout
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <AnimatePresence>
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4 }}
+                key={project.id}
+                className="glass-card group flex flex-col h-full"
+              >
+                {/* Image */}
+                <div className="relative h-56 overflow-hidden rounded-t-2xl">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300"></div>
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                {/* Category Badge */}
-                <div className="absolute top-4 right-4 z-10">
-                  <span className="px-3 py-1 bg-blue-50 dark:bg-blue-500/10 backdrop-blur-sm text-blue-700 dark:text-blue-300 rounded-full text-xs font-semibold border border-blue-100 dark:border-blue-500/20">
-                    {project.category}
-                  </span>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors duration-300">
-                  {project.title}
-                </h3>
-
-                <p className="text-gray-600 dark:text-gray-400 mb-5 line-clamp-3 leading-relaxed transition-colors duration-300">
-                  {project.description}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.slice(0, 3).map((tag, idx) => (
-                    <span
-                      key={idx}
-                      className="
-                        px-3
-                        py-1
-                        bg-blue-50
-                        dark:bg-blue-500/10
-                        text-blue-700
-                        dark:text-blue-300
-                        rounded-full
-                        text-xs
-                        font-semibold
-                        transition-all
-                        duration-300
-                        group-hover:bg-blue-100
-                        dark:group-hover:bg-blue-500/20
-                      "
-                    >
-                      {tag}
+                  <div className="absolute top-4 right-4 z-10">
+                    <span className="px-3 py-1 bg-dark/80 backdrop-blur-md text-light rounded-full text-xs font-semibold border border-gray/20">
+                      {project.category}
                     </span>
-                  ))}
-
-                  {project.tags.length > 3 && (
-                    <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-xs font-semibold">
-                      +{project.tags.length - 3}
-                    </span>
-                  )}
+                  </div>
                 </div>
 
-                {/* Buttons */}
-                <div className="flex gap-3">
-                  {/* Details */}
-                  <Link
-                    to={`/project/${project.id}`}
-                    className="
-                      flex-1
-                      flex
-                      items-center
-                      justify-center
-                      gap-2
-                      px-4
-                      py-3
-                      bg-gradient-to-r
-                      from-blue-600
-                      to-purple-600
-                      text-white
-                      font-semibold
-                      rounded-xl
-                      transition-all
-                      duration-300
-                      hover:scale-105
-                      shadow-lg
-                      hover:shadow-blue-500/30
-                    "
-                  >
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    Details
-                  </Link>
+                {/* Content */}
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-2xl font-bold text-light mb-3 group-hover:text-primary transition-colors duration-300">
+                    {project.title}
+                  </h3>
 
-                  {/* Demo */}
-                  <a
-                    href={project.demoLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="
-                      flex-1
-                      flex
-                      items-center
-                      justify-center
-                      gap-2
-                      px-4
-                      py-3
-                      border-2
-                      border-blue-500
-                      text-blue-600
-                      dark:text-blue-300
-                      font-semibold
-                      rounded-xl
-                      transition-all
-                      duration-300
-                      hover:bg-blue-600
-                      hover:text-white
-                      hover:border-blue-600
-                      hover:scale-105
-                    "
-                  >
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                  <p className="text-gray mb-6 line-clamp-3 leading-relaxed font-light flex-grow">
+                    {project.description}
+                  </p>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {project.tags.slice(0, 3).map((tag, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium border border-primary/20"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                    {project.tags.length > 3 && (
+                      <span className="px-3 py-1 bg-dark-light text-gray rounded-full text-xs font-medium border border-gray/20">
+                        +{project.tags.length - 3}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="flex gap-4 mt-auto">
+                    <Link
+                      to={`/project/${project.id}`}
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-primary text-white font-medium rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(79,70,229,0.3)]"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
-                    Demo
-                  </a>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Details
+                    </Link>
+
+                    <a
+                      href={project.demoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-transparent border border-primary text-primary font-medium rounded-xl transition-all duration-300 hover:bg-primary hover:text-white hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(79,70,229,0.3)]"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                      Demo
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );

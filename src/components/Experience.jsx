@@ -1,100 +1,77 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Experience = () => {
   return (
     <section
       id="experience"
-      className="
-        py-24
-        relative
-        overflow-hidden
-        bg-white
-        dark:bg-[#0B1120]
-        transition-colors
-        duration-300
-      "
+      className="py-24 relative overflow-hidden bg-dark transition-colors duration-300"
     >
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-400/20 dark:bg-blue-500/10 rounded-full blur-3xl"></div>
-
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-400/20 dark:bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[100px]"></div>
       </div>
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <p className="text-blue-600 dark:text-blue-300 font-semibold text-lg uppercase tracking-wider mb-4">
-            Professional Journey
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-primary font-semibold text-lg uppercase tracking-wider mb-4">
+              Professional Journey
+            </p>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              My Experience
-            </span>
-          </h2>
+            <div className="section-title mb-6">
+              <h2>My Experience</h2>
+            </div>
 
-          <div className="w-32 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
-
-          <p className="text-gray-500 dark:text-gray-400 mt-5 max-w-2xl mx-auto">
-            Practical experience in software development, Java desktop
-            applications, and modern programming concepts.
-          </p>
+            <p className="text-gray mt-5 max-w-2xl mx-auto font-light text-lg">
+              Practical experience in software development, Java desktop
+              applications, and modern programming concepts.
+            </p>
+          </motion.div>
         </div>
 
         {/* Experience Card */}
-        <div className="max-w-6xl mx-auto">
-          <div
-            className="
-              group
-              relative
-              grid
-              md:grid-cols-2
-              gap-10
-              items-center
-              bg-white
-              dark:bg-[#111827]
-              rounded-3xl
-              p-8
-              md:p-10
-              border
-              border-gray-100
-              dark:border-gray-800
-              transition-all
-              duration-300
-              hover:-translate-y-2
-              hover:border-blue-300/40
-              dark:hover:border-blue-500/30
-              hover:shadow-[0_20px_60px_rgba(59,130,246,0.15)]
-              dark:hover:shadow-[0_20px_60px_rgba(37,99,235,0.25)]
-            "
-          >
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-6xl mx-auto"
+        >
+          <div className="glass-card group relative grid md:grid-cols-2 gap-10 items-center p-8 md:p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(79,70,229,0.15)] overflow-hidden">
             {/* Hover Gradient */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
             {/* Left Content */}
             <div className="relative z-10">
               {/* Timeline Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-500/10 border border-blue-100 dark:border-blue-500/20 mb-6">
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-
-                <span className="text-sm font-semibold text-blue-700 dark:text-blue-300">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6 backdrop-blur-md">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                <span className="text-sm font-semibold text-primary">
                   July - August 2023
                 </span>
               </div>
 
               {/* Title */}
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">
+              <h3 className="text-3xl font-bold text-light mb-3 group-hover:text-primary transition-colors duration-300">
                 Summer Training / Internship
               </h3>
 
               {/* Company */}
-              <h4 className="text-xl font-semibold text-purple-600 dark:text-purple-300 mb-6">
+              <h4 className="text-xl font-semibold text-secondary mb-6 flex items-center gap-2">
+                <i className="fas fa-building text-sm"></i>
                 Technonto Academy
               </h4>
 
               {/* Description */}
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
+              <p className="text-gray leading-relaxed mb-8 font-light">
                 Gained hands-on experience in Java Swing for GUI-based desktop
                 application development. Developed interactive applications using
                 Swing components like JFrame, JPanel, JButton, JTextField, and
@@ -105,15 +82,15 @@ const Experience = () => {
 
               {/* Skills Tags */}
               <div className="flex flex-wrap gap-3 mb-8">
-                <span className="px-4 py-2 bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-300 rounded-full text-sm font-semibold">
-                  Java Swing
+                <span className="px-4 py-2 bg-dark-light/50 border border-gray/20 text-light rounded-full text-sm font-medium hover:border-primary/50 hover:bg-primary/10 transition-colors">
+                  <i className="fas fa-code mr-2 text-primary"></i>
+                  Software Engineering
                 </span>
-
-                <span className="px-4 py-2 bg-purple-50 dark:bg-purple-500/10 text-purple-700 dark:text-purple-300 rounded-full text-sm font-semibold">
-                  Event Handling
+                <span className="px-4 py-2 bg-dark-light/50 border border-gray/20 text-light rounded-full text-sm font-medium hover:border-secondary/50 hover:bg-secondary/10 transition-colors">
+                  <i className="fas fa-server mr-2 text-secondary"></i>
+                  Backend Systems
                 </span>
-
-                <span className="px-4 py-2 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-semibold">
+                <span className="px-4 py-2 bg-dark-light/50 border border-gray/20 text-light rounded-full text-sm font-medium hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-colors">
                   Desktop Applications
                 </span>
               </div>
@@ -123,68 +100,33 @@ const Experience = () => {
                 href="https://drive.google.com/file/d/1nhRUigAZcna5ZtHXGePsBvYkv1O9zELu/view"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="
-                  inline-flex
-                  items-center
-                  gap-3
-                  px-6
-                  py-3
-                  bg-gradient-to-r
-                  from-blue-600
-                  to-purple-600
-                  text-white
-                  font-semibold
-                  rounded-xl
-                  transition-all
-                  duration-300
-                  hover:scale-105
-                  shadow-lg
-                  hover:shadow-blue-500/30
-                "
+                className="btn inline-flex items-center gap-3"
               >
                 <i className="fas fa-external-link-alt"></i>
-
                 View Certificate
               </a>
             </div>
 
             {/* Right Image */}
-            <div className="relative z-10">
-              <div
-                className="
-                  relative
-                  overflow-hidden
-                  rounded-3xl
-                  border
-                  border-gray-200
-                  dark:border-gray-700
-                  shadow-2xl
-                "
-              >
+            <div className="relative z-10 h-full flex items-center">
+              <div className="relative overflow-hidden rounded-3xl border border-gray/20 shadow-2xl glass-card w-full">
                 <img
                   src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
                   alt="Internship Experience"
-                  className="
-                    w-full
-                    h-[420px]
-                    object-cover
-                    transition-transform
-                    duration-500
-                    group-hover:scale-105
-                  "
+                  className="w-full h-[420px] object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
                 />
 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300"></div>
 
                 {/* Floating Badge */}
-                <div className="absolute bottom-6 left-6">
-                  <div className="px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20">
-                    <p className="text-white text-sm font-medium">
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="p-4 rounded-2xl bg-dark/50 backdrop-blur-md border border-gray/20">
+                    <p className="text-gray text-sm font-medium">
                       Internship Experience
                     </p>
-
-                    <h5 className="text-white text-lg font-bold mt-1">
+                    <h5 className="text-light text-lg font-bold mt-1">
                       Java Development
                     </h5>
                   </div>
@@ -194,39 +136,25 @@ const Experience = () => {
 
             {/* Active Dot */}
             <div className="absolute top-6 right-6">
-              <div className="w-3 h-3 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50"></div>
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse shadow-[0_0_10px_rgba(79,70,229,0.5)]"></div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Bottom Text */}
-        <div className="text-center mt-20">
-          <p className="text-gray-500 dark:text-gray-400 text-lg">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-center mt-20"
+        >
+          <p className="text-gray text-lg font-light">
             Continuously building real-world experience and modern development
             expertise.
           </p>
-        </div>
+        </motion.div>
       </div>
-
-      <style jsx>{`
-        .transition-all {
-          transition-property: all;
-          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-          transition-duration: 300ms;
-        }
-
-        .transition-transform {
-          transition-property: transform;
-          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-          transition-duration: 500ms;
-        }
-
-        .transition-opacity {
-          transition-property: opacity;
-          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-          transition-duration: 300ms;
-        }
-      `}</style>
     </section>
   );
 };
