@@ -36,8 +36,8 @@ const Projects = () => {
         "PostgreSQL"
       ],
       category: "Mobile & AI",
-      demoLink: "https://github.com/Shrawan3067",
-      githubLink: "https://github.com/Shrawan3067",
+      demoLink: "https://caliwo-landing-page.vercel.app/",
+      githubLink: "https://caliwo-landing-page.vercel.app/",
     },
     {
       id: "allcalculator",
@@ -59,8 +59,8 @@ const Projects = () => {
         "SEO Optimization"
       ],
       category: "Full Stack Web",
-      demoLink: "https://allcalculator-coral.vercel.app/",
-      githubLink: "https://github.com/Shrawan3067/allcalculator.git",
+      demoLink: "https://www.allcalculator.net/",
+      githubLink: "https://www.allcalculator.net/",
     },
     {
       id: "suwidha",
