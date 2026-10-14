@@ -13,7 +13,7 @@ const CodingProfile = () => {
       platform: "LeetCode",
       handle: "@shrawansah",
       icon: "fas fa-code",
-      color: "text-amber-400"
+      color: "text-amber-500"
     },
     {
       metric: "4 Badges",
@@ -21,7 +21,7 @@ const CodingProfile = () => {
       platform: "HackerRank",
       handle: "@shrawansah3067",
       icon: "fas fa-medal",
-      color: "text-emerald-400"
+      color: "text-emerald-500"
     },
     {
       metric: "10×",
@@ -29,7 +29,7 @@ const CodingProfile = () => {
       platform: "GharSeDeal",
       handle: "Founder & Software Engineer",
       icon: "fas fa-bolt",
-      color: "text-cyan-400"
+      color: "text-indigo-600 dark:text-cyan-400"
     },
     {
       metric: "3,000+",
@@ -37,7 +37,7 @@ const CodingProfile = () => {
       platform: "AllCalculator.net",
       handle: "750+ Live Engines",
       icon: "fas fa-users",
-      color: "text-indigo-400"
+      color: "text-purple-600 dark:text-indigo-400"
     }
   ];
 
@@ -48,10 +48,10 @@ const CodingProfile = () => {
       link: 'https://leetcode.com/u/Shrawansah/',
       handle: '@shrawansah',
       badge: '600+ Problems Solved',
-      badgeColor: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
+      badgeColor: 'bg-amber-50 dark:bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-500/30',
       description:
         'Solved 600+ Data Structures & Algorithms problems across Trees, Graphs, DP, Arrays, and Strings with algorithmic efficiency.',
-      border: 'hover:border-amber-500/50',
+      border: 'hover:border-amber-400',
       button: 'from-amber-500 to-orange-500',
     },
     {
@@ -60,10 +60,10 @@ const CodingProfile = () => {
       link: 'https://www.hackerrank.com/profile/shrawansah3067',
       handle: '@shrawansah3067',
       badge: '4 Verified Badges',
-      badgeColor: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
+      badgeColor: 'bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-500/30',
       description:
         'Earned 4 official skill badges in Java, C++, and SQL demonstrating strong problem solving and query mastery.',
-      border: 'hover:border-emerald-500/50',
+      border: 'hover:border-emerald-400',
       button: 'from-emerald-500 to-teal-500',
     },
     {
@@ -72,10 +72,10 @@ const CodingProfile = () => {
       link: 'https://www.geeksforgeeks.org/profile/shrawansah3067?tab=activity',
       handle: '@shrawansah3067',
       badge: 'Core CS Practice',
-      badgeColor: 'bg-green-500/15 text-green-300 border-green-500/30',
+      badgeColor: 'bg-green-50 dark:bg-green-500/15 text-green-700 dark:text-green-300 border-green-200 dark:border-green-500/30',
       description:
         'Active problem solving, competitive coding contests, and core computer science concepts practice.',
-      border: 'hover:border-green-500/50',
+      border: 'hover:border-green-400',
       button: 'from-green-500 to-emerald-600',
     },
     {
@@ -84,18 +84,18 @@ const CodingProfile = () => {
       link: 'https://github.com/Shrawan3067',
       handle: '@Shrawan3067',
       badge: 'Full Stack Repositories',
-      badgeColor: 'bg-indigo-500/15 text-indigo-300 border-indigo-500/30',
+      badgeColor: 'bg-indigo-50 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-500/30',
       description:
         'Open source projects, marketplace architecture, responsive React components, and modular Node.js REST API servers.',
-      border: 'hover:border-indigo-500/50',
-      button: 'from-indigo-500 to-cyan-500',
+      border: 'hover:border-indigo-400',
+      button: 'from-indigo-600 to-cyan-500',
     },
   ];
 
   return (
     <section
       id="coding-profile"
-      className="py-24 relative overflow-hidden bg-[#090d16] transition-colors duration-300"
+      className="py-24 relative overflow-hidden bg-[#f8fafc] dark:bg-[#090d16] transition-colors duration-300"
     >
       {/* Background Lighting */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -113,15 +113,15 @@ const CodingProfile = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="flex flex-col items-center">
-            <span className="section-badge">
-              <i className="fas fa-trophy text-[10px]"></i>
-              Competitive & Open Source
-            </span>
-            <div className="section-title">
-              <h2>Achievements & Coding Profiles</h2>
+              <span className="section-badge">
+                <i className="fas fa-trophy text-[10px]"></i>
+                Competitive & Open Source
+              </span>
+              <div className="section-title">
+                <h2>Achievements & Coding Profiles</h2>
+              </div>
             </div>
-            </div>
-            <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mt-4 font-normal">
+            <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mt-4 font-normal">
               Validated problem solving, competitive coding achievements, and code repositories directly from my CV.
             </p>
           </motion.div>
@@ -144,10 +144,10 @@ const CodingProfile = () => {
               <div className={`text-2xl sm:text-3xl font-black ${ach.color} tracking-tight`}>
                 {ach.metric}
               </div>
-              <div className="text-xs font-semibold text-white mt-1">
+              <div className="text-xs font-semibold text-slate-900 dark:text-white mt-1">
                 {ach.label}
               </div>
-              <div className="text-[11px] font-mono text-slate-400 mt-0.5">
+              <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400 mt-0.5">
                 {ach.platform}
               </div>
             </motion.div>
@@ -163,12 +163,12 @@ const CodingProfile = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`glass-card p-6 flex flex-col justify-between group hover:-translate-y-2 border border-slate-800 transition-all ${profile.border}`}
+              className={`glass-card p-6 flex flex-col justify-between group hover:-translate-y-2 border border-slate-200 dark:border-slate-800 transition-all ${profile.border}`}
             >
               <div>
                 {/* Icon & Badge */}
                 <div className="flex items-center justify-between gap-2 mb-6">
-                  <div className="w-14 h-14 rounded-2xl bg-slate-950/80 border border-slate-800 p-2.5 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+                  <div className="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 p-2.5 flex items-center justify-center shadow-md dark:shadow-lg group-hover:scale-105 transition-transform">
                     <img
                       src={profile.icon}
                       alt={profile.name}
@@ -182,19 +182,19 @@ const CodingProfile = () => {
                 </div>
 
                 {/* Name & Handle */}
-                <h3 className="text-xl font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1 group-hover:text-indigo-600 dark:group-hover:text-cyan-400 transition-colors">
                   {profile.name}
                 </h3>
-                <p className="text-xs font-mono text-slate-400 mb-4">{profile.handle}</p>
+                <p className="text-xs font-mono text-slate-500 dark:text-slate-400 mb-4">{profile.handle}</p>
 
                 {/* Description */}
-                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-normal mb-6">
+                <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed font-normal mb-6">
                   {profile.description}
                 </p>
               </div>
 
               {/* Action Button */}
-              <div className="pt-4 border-t border-slate-800/80 mt-auto">
+              <div className="pt-4 border-t border-slate-200 dark:border-slate-800/80 mt-auto">
                 <a
                   href={profile.link}
                   target="_blank"

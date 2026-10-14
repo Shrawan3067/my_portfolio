@@ -115,12 +115,12 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="py-24 relative overflow-hidden bg-[#090d16] transition-colors duration-300"
+      className="py-24 relative overflow-hidden bg-[#f8fafc] dark:bg-[#090d16] transition-colors duration-300"
     >
       {/* Background Lighting */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[150px]"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[150px]"></div>
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-500/10 dark:bg-indigo-600/10 rounded-full blur-[150px]"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-400/10 dark:bg-cyan-500/10 rounded-full blur-[150px]"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
@@ -133,33 +133,33 @@ const Skills = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="flex flex-col items-center">
-            <span className="section-badge">
-              <i className="fas fa-microchip text-[10px]"></i>
-              Technical Stack
-            </span>
-            <div className="section-title">
-              <h2>Skills & Technologies</h2>
+              <span className="section-badge">
+                <i className="fas fa-microchip text-[10px]"></i>
+                Technical Stack
+              </span>
+              <div className="section-title">
+                <h2>Skills & Technologies</h2>
+              </div>
             </div>
-            </div>
-            <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mt-4 font-normal">
+            <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mt-4 font-normal">
               Direct technical competencies categorized precisely according to my verified curriculum vitae.
             </p>
           </motion.div>
         </div>
 
         {/* Filter Controls Bar */}
-        <div className="max-w-4xl mx-auto mb-12 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="max-w-5xl mx-auto mb-12 flex flex-col md:flex-row items-center justify-between gap-4">
           
           {/* Category Tabs */}
-          <div className="flex flex-wrap justify-center gap-1.5 bg-slate-900/80 backdrop-blur-xl p-1.5 rounded-2xl border border-slate-800 shadow-xl">
+          <div className="flex flex-wrap justify-center gap-1.5 bg-slate-200/80 dark:bg-slate-900/80 backdrop-blur-xl p-1.5 rounded-2xl border border-slate-300/80 dark:border-slate-800 shadow-md dark:shadow-xl">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
                   selectedCategory === cat.id
-                    ? "bg-gradient-to-r from-indigo-500 to-cyan-500 text-white shadow-md shadow-indigo-500/30"
-                    : "text-slate-400 hover:text-white hover:bg-slate-800/60"
+                    ? "bg-gradient-to-r from-indigo-600 to-cyan-500 text-white shadow-md shadow-indigo-500/30"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/60"
                 }`}
               >
                 {cat.label}
@@ -169,18 +169,18 @@ const Skills = () => {
 
           {/* Search Box */}
           <div className="relative w-full md:w-64">
-            <i className="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+            <i className="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 text-xs"></i>
             <input
               type="text"
               placeholder="Filter skill or keyword..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 rounded-xl text-xs sm:text-sm bg-slate-900/80 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
+              className="w-full pl-9 pr-4 py-2 rounded-xl text-xs sm:text-sm bg-white dark:bg-slate-900/80 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors shadow-sm"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-white text-xs"
               >
                 <i className="fas fa-times"></i>
               </button>
@@ -201,17 +201,17 @@ const Skills = () => {
             >
               <div>
                 {/* Header */}
-                <div className="flex items-center gap-3.5 mb-6 pb-4 border-b border-slate-800/80">
+                <div className="flex items-center gap-3.5 mb-6 pb-4 border-b border-slate-200 dark:border-slate-800/80">
                   <div
                     className={`w-11 h-11 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center text-white text-base shadow-md`}
                   >
                     <i className={category.icon}></i>
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-cyan-400 transition-colors">
                       {category.title}
                     </h3>
-                    <p className="text-xs text-slate-400 font-mono">
+                    <p className="text-xs text-slate-500 dark:text-slate-400 font-mono">
                       {category.skills.length} Technical Skills
                     </p>
                   </div>
@@ -222,12 +222,12 @@ const Skills = () => {
                   {category.skills.map((skill, sIdx) => (
                     <div key={sIdx} className="space-y-1.5">
                       <div className="flex items-center justify-between text-xs sm:text-sm">
-                        <span className="font-semibold text-slate-200">{skill.name}</span>
-                        <span className="font-mono text-cyan-400 font-bold text-xs">{skill.level}%</span>
+                        <span className="font-semibold text-slate-800 dark:text-slate-200">{skill.name}</span>
+                        <span className="font-mono text-indigo-600 dark:text-cyan-400 font-bold text-xs">{skill.level}%</span>
                       </div>
 
                       {/* Progress Bar */}
-                      <div className="w-full h-1.5 bg-slate-950 rounded-full overflow-hidden">
+                      <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-950 rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
                           whileInView={{ width: `${skill.level}%` }}
@@ -238,7 +238,7 @@ const Skills = () => {
                       </div>
 
                       {/* Detail Snippet */}
-                      <p className="text-[11px] text-slate-400 font-normal leading-tight">
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 font-normal leading-tight">
                         {skill.detail}
                       </p>
                     </div>

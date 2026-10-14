@@ -33,12 +33,17 @@
   }
 
   body {
-    background-color: rgb(var(--dark));
-    color: rgb(var(--light));
+    background-color: #f8fafc;
+    color: #0f172a;
     font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  html.dark body, body.dark {
+    background-color: #090d16;
+    color: #f8fafc;
   }
 
   /* Custom modern scrollbar */
@@ -46,14 +51,17 @@
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: rgb(var(--dark));
+    background: #f1f5f9;
+  }
+  html.dark ::-webkit-scrollbar-track {
+    background: #090d16;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(99, 102, 241, 0.3);
+    background: rgba(99, 102, 241, 0.4);
     border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(99, 102, 241, 0.6);
+    background: rgba(99, 102, 241, 0.7);
   }
 }
 
@@ -71,7 +79,7 @@
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 bg-slate-900/60 backdrop-blur-md text-slate-200 px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide border border-slate-700/80 transition-all duration-300 hover:border-indigo-500/80 hover:text-white hover:bg-indigo-500/10 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-500/15 active:translate-y-0 cursor-pointer;
+    @apply inline-flex items-center justify-center gap-2 bg-white/80 dark:bg-slate-900/60 backdrop-blur-md text-slate-800 dark:text-slate-200 px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide border border-slate-300 dark:border-slate-700/80 transition-all duration-300 hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-white dark:hover:border-indigo-500/80 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-500/15 active:translate-y-0 cursor-pointer;
   }
 
   .btn {
@@ -80,80 +88,61 @@
 
   /* Glassmorphic card styling */
   .glass-card {
-    @apply relative bg-slate-900/50 backdrop-blur-xl border border-slate-800/80 rounded-2xl shadow-xl transition-all duration-300 hover:border-indigo-500/40 hover:shadow-[0_12px_40px_rgba(99,102,241,0.12)];
+    @apply relative bg-white/80 dark:bg-slate-900/50 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800/80 rounded-2xl shadow-lg dark:shadow-xl transition-all duration-300 hover:border-indigo-500/40 hover:shadow-[0_12px_40px_rgba(99,102,241,0.12)];
   }
 
   .glass-panel {
-    @apply bg-slate-900/40 backdrop-blur-md border border-slate-800/60 rounded-xl;
+    @apply bg-slate-50 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200 dark:border-slate-800/60 rounded-xl;
   }
 
-  /* Section Title with modern accent */
+  /* Section Title */
   .section-title {
     @apply relative inline-block text-center;
   }
 
   .section-title h2 {
-    @apply text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white;
+    @apply text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white;
   }
 
   .section-badge {
-    @apply inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-4 backdrop-blur-sm;
+    @apply inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/20 mb-4 backdrop-blur-sm;
   }
 
   /* Background Grid Pattern */
   .bg-grid-pattern {
     background-size: 40px 40px;
     background-image: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  }
+
+  html.dark .bg-grid-pattern {
+    background-image: 
       linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   }
-
-  .bg-mesh-gradient {
-    background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 60%),
-                radial-gradient(circle at 100% 100%, rgba(6, 182, 212, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 0% 100%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
-  }
 }
 
-/* Light mode overrides */
-body.light {
-  background-color: #f8fafc !important;
-  color: #0f172a !important;
+/* Light mode specific fine-tuning */
+html.light .glass-card {
+  background-color: rgba(255, 255, 255, 0.88) !important;
+  border-color: rgba(226, 232, 240, 0.95) !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.05) !important;
 }
 
-body.light .bg-grid-pattern {
-  background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-}
-
-body.light .glass-card {
-  background-color: rgba(255, 255, 255, 0.85) !important;
-  border-color: rgba(226, 232, 240, 0.9) !important;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05) !important;
-}
-
-body.light .glass-card:hover {
+html.light .glass-card:hover {
   border-color: rgba(99, 102, 241, 0.4) !important;
-  box-shadow: 0 20px 35px -5px rgba(99, 102, 241, 0.1) !important;
+  box-shadow: 0 20px 35px -5px rgba(99, 102, 241, 0.12) !important;
 }
 
-body.light .text-light,
-body.light .section-title h2 {
+html.light input,
+html.light textarea {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
   color: #0f172a !important;
 }
 
-body.light .text-gray {
-  color: #64748b !important;
-}
-
-body.light .btn-outline {
-  background-color: #ffffff !important;
-  color: #334155 !important;
-  border-color: #cbd5e1 !important;
-}
-body.light .btn-outline:hover {
-  border-color: #6366f1 !important;
-  color: #6366f1 !important;
-  background-color: rgba(99, 102, 241, 0.05) !important;
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94a3b8 !important;
 }

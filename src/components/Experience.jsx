@@ -70,12 +70,12 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="py-24 relative overflow-hidden bg-[#090d16] transition-colors duration-300"
+      className="py-24 relative overflow-hidden bg-[#f8fafc] dark:bg-[#090d16] transition-colors duration-300"
     >
       {/* Background Lighting */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 right-10 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[150px]"></div>
-        <div className="absolute bottom-1/4 left-10 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[150px]"></div>
+        <div className="absolute top-1/4 right-10 w-[500px] h-[500px] bg-indigo-500/10 dark:bg-indigo-600/10 rounded-full blur-[150px]"></div>
+        <div className="absolute bottom-1/4 left-10 w-[500px] h-[500px] bg-cyan-400/10 dark:bg-cyan-500/10 rounded-full blur-[150px]"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
@@ -88,15 +88,15 @@ const Experience = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="flex flex-col items-center">
-            <span className="section-badge">
-              <i className="fas fa-briefcase text-[10px]"></i>
-              Career Experience
-            </span>
-            <div className="section-title">
-              <h2>Work & Leadership Journey</h2>
+              <span className="section-badge">
+                <i className="fas fa-briefcase text-[10px]"></i>
+                Career Experience
+              </span>
+              <div className="section-title">
+                <h2>Work & Leadership Journey</h2>
+              </div>
             </div>
-            </div>
-            <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mt-4 font-normal">
+            <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mt-4 font-normal">
               Direct engineering impact, full-stack product building, and performance optimization from my CV.
             </p>
           </motion.div>
@@ -123,32 +123,32 @@ const Experience = () => {
                   {/* Header Row */}
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div className="flex flex-wrap items-center gap-2.5">
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/15 text-indigo-400 border border-indigo-500/30">
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/30">
                         {exp.badge}
                       </span>
                       {exp.isCurrent && (
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30">
+                          <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse"></span>
                           Present
                         </span>
                       )}
                     </div>
-                    <div className="text-xs font-mono text-slate-400 flex items-center gap-1.5">
-                      <i className="far fa-calendar-alt text-cyan-400"></i>
+                    <div className="text-xs font-mono text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                      <i className="far fa-calendar-alt text-cyan-600 dark:text-cyan-400"></i>
                       <span>{exp.period}</span>
                     </div>
                   </div>
 
                   {/* Title & Company */}
                   <div>
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight group-hover:text-indigo-400 transition-colors">
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                       {exp.role}
                     </h3>
-                    <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-1.5 text-sm sm:text-base text-slate-300">
-                      <span className="font-semibold text-cyan-400">{exp.company}</span>
-                      <span className="text-slate-600">•</span>
-                      <span className="text-slate-400 flex items-center gap-1">
-                        <i className="fas fa-map-marker-alt text-xs text-slate-500"></i>
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-1.5 text-sm sm:text-base text-slate-600 dark:text-slate-300">
+                      <span className="font-semibold text-indigo-600 dark:text-cyan-400">{exp.company}</span>
+                      <span className="text-slate-400 dark:text-slate-600">•</span>
+                      <span className="text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                        <i className="fas fa-map-marker-alt text-xs text-slate-400"></i>
                         {exp.location}
                       </span>
                     </div>
@@ -156,21 +156,21 @@ const Experience = () => {
 
                   {/* Key metric callout */}
                   {exp.statHighlight && (
-                    <div className="p-3.5 rounded-xl bg-slate-950/70 border border-indigo-500/20 flex items-center gap-4">
-                      <div className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">
+                    <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200 dark:border-indigo-500/20 flex items-center gap-4">
+                      <div className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-indigo-400 dark:to-cyan-400">
                         {exp.statHighlight.number}
                       </div>
-                      <div className="text-xs sm:text-sm font-medium text-slate-300">
+                      <div className="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">
                         {exp.statHighlight.label}
                       </div>
                     </div>
                   )}
 
                   {/* Bullet Points from CV */}
-                  <ul className="space-y-2.5 text-sm sm:text-base text-slate-300 font-normal">
+                  <ul className="space-y-2.5 text-sm sm:text-base text-slate-700 dark:text-slate-300 font-normal">
                     {exp.bullets.map((bullet, bIdx) => (
                       <li key={bIdx} className="flex items-start gap-3">
-                        <span className="w-5 h-5 rounded-full bg-indigo-500/10 text-indigo-400 flex items-center justify-center shrink-0 mt-0.5 text-xs">
+                        <span className="w-5 h-5 rounded-full bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0 mt-0.5 text-xs">
                           <i className="fas fa-check text-[10px]"></i>
                         </span>
                         <span className="leading-relaxed">{bullet}</span>
@@ -183,7 +183,7 @@ const Experience = () => {
                     {exp.technologies.map((tech, tIdx) => (
                       <span
                         key={tIdx}
-                        className="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-slate-800/80 text-slate-300 border border-slate-700/60"
+                        className="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60"
                       >
                         {tech}
                       </span>
@@ -221,7 +221,7 @@ const Experience = () => {
                         rel="noopener noreferrer"
                         className="btn-outline text-xs py-2.5 px-5"
                       >
-                        <i className="fas fa-certificate text-xs text-amber-400"></i>
+                        <i className="fas fa-certificate text-xs text-amber-500"></i>
                         <span>View Training Certificate</span>
                       </a>
                     )}
@@ -230,7 +230,7 @@ const Experience = () => {
 
                 {/* Right: Visual Preview Card (5 cols) */}
                 <div className="lg:col-span-5 h-full flex flex-col justify-center">
-                  <div className="relative rounded-2xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-950 group-hover:border-indigo-500/40 transition-colors">
+                  <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl dark:shadow-2xl bg-slate-100 dark:bg-slate-950 group-hover:border-indigo-500/40 transition-colors">
                     <img
                       src={exp.image}
                       alt={exp.company}
@@ -238,13 +238,13 @@ const Experience = () => {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                    <div className="absolute bottom-4 left-4 right-4 p-3 bg-slate-900/80 backdrop-blur-md rounded-xl border border-slate-800">
+                    <div className="absolute bottom-4 left-4 right-4 p-3 bg-white/90 dark:bg-slate-900/80 backdrop-blur-md rounded-xl border border-slate-200 dark:border-slate-800">
                       <div className="flex items-center justify-between">
                         <div>
-                          <div className="text-xs font-bold text-white">{exp.company}</div>
-                          <div className="text-[11px] text-slate-400">{exp.role}</div>
+                          <div className="text-xs font-bold text-slate-900 dark:text-white">{exp.company}</div>
+                          <div className="text-[11px] text-slate-500 dark:text-slate-400">{exp.role}</div>
                         </div>
-                        <span className="text-[11px] font-mono font-semibold text-cyan-400">{exp.period}</span>
+                        <span className="text-[11px] font-mono font-semibold text-cyan-600 dark:text-cyan-400">{exp.period}</span>
                       </div>
                     </div>
                   </div>

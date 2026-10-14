@@ -103,7 +103,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-24 relative overflow-hidden bg-[#090d16] transition-colors duration-300"
+      className="py-24 relative overflow-hidden bg-[#f8fafc] dark:bg-[#090d16] transition-colors duration-300"
     >
       {/* Toast Notification */}
       <AnimatePresence>
@@ -114,8 +114,8 @@ const Contact = () => {
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             className={`fixed top-24 right-4 sm:right-8 z-50 px-6 py-4 rounded-2xl shadow-2xl backdrop-blur-2xl border flex items-center gap-3.5 max-w-md ${
               toast.type === "success"
-                ? "bg-emerald-950/90 border-emerald-500/40 text-emerald-300"
-                : "bg-red-950/90 border-red-500/40 text-red-300"
+                ? "bg-emerald-900/90 dark:bg-emerald-950/90 border-emerald-500/40 text-emerald-100 dark:text-emerald-300"
+                : "bg-red-900/90 dark:bg-red-950/90 border-red-500/40 text-red-100 dark:text-red-300"
             }`}
           >
             <div className="text-xl shrink-0">
@@ -132,8 +132,8 @@ const Contact = () => {
 
       {/* Background Lighting */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[160px]"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[160px]"></div>
+        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-indigo-500/10 dark:bg-indigo-600/10 rounded-full blur-[160px]"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-cyan-400/10 dark:bg-cyan-500/10 rounded-full blur-[160px]"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
@@ -146,15 +146,15 @@ const Contact = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="flex flex-col items-center">
-            <span className="section-badge">
-              <i className="fas fa-paper-plane text-[10px]"></i>
-              Let's Connect
-            </span>
-            <div className="section-title">
-              <h2>Get In Touch</h2>
+              <span className="section-badge">
+                <i className="fas fa-paper-plane text-[10px]"></i>
+                Let's Connect
+              </span>
+              <div className="section-title">
+                <h2>Get In Touch</h2>
+              </div>
             </div>
-            </div>
-            <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mt-4 font-normal">
+            <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mt-4 font-normal">
               Interested in full-time opportunities, engineering collaborations, or marketplace discussions? Let's talk.
             </p>
           </motion.div>
@@ -172,10 +172,10 @@ const Contact = () => {
             className="lg:col-span-5 glass-card p-6 sm:p-8 space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-extrabold text-white tracking-tight mb-2">
+              <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2">
                 Contact Information
               </h3>
-              <p className="text-slate-400 text-xs sm:text-sm font-normal">
+              <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm font-normal">
                 Direct contact details verified from my curriculum vitae.
               </p>
             </div>
@@ -183,25 +183,25 @@ const Contact = () => {
             <div className="space-y-6">
               {/* Email */}
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 shrink-0 text-base">
+                <div className="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0 text-base">
                   <i className="fas fa-envelope"></i>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-xs font-medium text-slate-400">Direct Email</div>
+                  <div className="text-xs font-medium text-slate-500 dark:text-slate-400">Direct Email</div>
                   <div className="flex items-center gap-2 mt-0.5">
                     <a
                       href="mailto:shrawansah3067@gmail.com"
-                      className="text-white hover:text-cyan-400 font-semibold text-sm truncate transition-colors"
+                      className="text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-cyan-400 font-semibold text-sm truncate transition-colors"
                     >
                       shrawansah3067@gmail.com
                     </a>
                     <button
                       onClick={copyEmailToClipboard}
-                      className="text-xs text-slate-400 hover:text-cyan-300 p-1 rounded transition-colors"
+                      className="text-xs text-slate-500 hover:text-indigo-600 dark:hover:text-cyan-300 p-1 rounded transition-colors"
                       title="Copy email to clipboard"
                     >
                       {copiedEmail ? (
-                        <i className="fas fa-check text-emerald-400"></i>
+                        <i className="fas fa-check text-emerald-500"></i>
                       ) : (
                         <i className="fas fa-copy"></i>
                       )}
@@ -212,14 +212,14 @@ const Contact = () => {
 
               {/* Phone */}
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0 text-base">
+                <div className="w-12 h-12 rounded-xl bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/20 flex items-center justify-center text-cyan-600 dark:text-cyan-400 shrink-0 text-base">
                   <i className="fas fa-phone-alt"></i>
                 </div>
                 <div>
-                  <div className="text-xs font-medium text-slate-400">Phone & WhatsApp</div>
+                  <div className="text-xs font-medium text-slate-500 dark:text-slate-400">Phone & WhatsApp</div>
                   <a
                     href="tel:+918360705978"
-                    className="text-white hover:text-cyan-400 font-semibold text-sm block mt-0.5 transition-colors font-mono"
+                    className="text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-cyan-400 font-semibold text-sm block mt-0.5 transition-colors font-mono"
                   >
                     +91 83607 05978
                   </a>
@@ -228,15 +228,15 @@ const Contact = () => {
 
               {/* Location */}
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0 text-base">
+                <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 text-base">
                   <i className="fas fa-map-marker-alt"></i>
                 </div>
                 <div>
-                  <div className="text-xs font-medium text-slate-400">Current Location</div>
-                  <div className="text-white font-semibold text-sm mt-0.5">
+                  <div className="text-xs font-medium text-slate-500 dark:text-slate-400">Current Location</div>
+                  <div className="text-slate-900 dark:text-white font-semibold text-sm mt-0.5">
                     Phagwara, Punjab, India
                   </div>
-                  <div className="text-[11px] text-slate-400">Available across Jalandhar / Punjab / Remote</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400">Available across Jalandhar / Punjab / Remote</div>
                 </div>
               </div>
 
@@ -246,12 +246,12 @@ const Contact = () => {
                   <i className="fab fa-linkedin-in"></i>
                 </div>
                 <div>
-                  <div className="text-xs font-medium text-slate-400">LinkedIn Profile</div>
+                  <div className="text-xs font-medium text-slate-500 dark:text-slate-400">LinkedIn Profile</div>
                   <a
                     href="https://www.linkedin.com/in/shrawansah"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white hover:text-cyan-400 font-semibold text-sm block mt-0.5 transition-colors"
+                    className="text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-cyan-400 font-semibold text-sm block mt-0.5 transition-colors"
                   >
                     linkedin.com/in/shrawansah
                   </a>
@@ -260,16 +260,16 @@ const Contact = () => {
 
               {/* GitHub */}
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-white shrink-0 text-base">
+                <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-800 dark:text-white shrink-0 text-base">
                   <i className="fab fa-github"></i>
                 </div>
                 <div>
-                  <div className="text-xs font-medium text-slate-400">GitHub Profile</div>
+                  <div className="text-xs font-medium text-slate-500 dark:text-slate-400">GitHub Profile</div>
                   <a
                     href="https://github.com/Shrawan3067"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white hover:text-cyan-400 font-semibold text-sm block mt-0.5 transition-colors"
+                    className="text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-cyan-400 font-semibold text-sm block mt-0.5 transition-colors"
                   >
                     github.com/Shrawan3067
                   </a>
@@ -278,14 +278,14 @@ const Contact = () => {
             </div>
 
             {/* Quick Action */}
-            <div className="pt-6 border-t border-slate-800/80">
+            <div className="pt-6 border-t border-slate-200 dark:border-slate-800/80">
               <a
                 href="https://wa.me/918360705978"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-outline w-full text-xs py-3 justify-center gap-2"
               >
-                <i className="fab fa-whatsapp text-emerald-400 text-sm"></i>
+                <i className="fab fa-whatsapp text-emerald-500 text-sm"></i>
                 <span>Direct WhatsApp Chat</span>
               </a>
             </div>
@@ -299,17 +299,17 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7 glass-card p-6 sm:p-8"
           >
-            <h3 className="text-2xl font-extrabold text-white tracking-tight mb-2">
+            <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2">
               Send a Message
             </h3>
-            <p className="text-slate-400 text-xs sm:text-sm mb-8 font-normal">
+            <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm mb-8 font-normal">
               Leave your contact info and inquiry — I'll respond within 24 hours.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label htmlFor="name" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                  <label htmlFor="name" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
                     Your Name *
                   </label>
                   <input
@@ -320,12 +320,12 @@ const Contact = () => {
                     placeholder="e.g. Alex Johnson"
                     required
                     disabled={loading}
-                    className="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition-colors disabled:opacity-50"
+                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 dark:focus:border-cyan-400 transition-colors disabled:opacity-50 shadow-sm"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                  <label htmlFor="email" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
                     Your Email *
                   </label>
                   <input
@@ -336,13 +336,13 @@ const Contact = () => {
                     placeholder="e.g. alex@company.com"
                     required
                     disabled={loading}
-                    className="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition-colors disabled:opacity-50"
+                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 dark:focus:border-cyan-400 transition-colors disabled:opacity-50 shadow-sm"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="title" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                <label htmlFor="title" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
                   Subject *
                 </label>
                 <input
@@ -353,12 +353,12 @@ const Contact = () => {
                   placeholder="e.g. Full Stack Engineer Role / Project Collaboration"
                   required
                   disabled={loading}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition-colors disabled:opacity-50"
+                  className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 dark:focus:border-cyan-400 transition-colors disabled:opacity-50 shadow-sm"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                <label htmlFor="message" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
                   Your Message *
                 </label>
                 <textarea
@@ -369,7 +369,7 @@ const Contact = () => {
                   placeholder="Hello Shrawan, we came across your portfolio and would like to discuss..."
                   required
                   disabled={loading}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition-colors disabled:opacity-50 resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 dark:focus:border-cyan-400 transition-colors disabled:opacity-50 resize-none shadow-sm"
                 ></textarea>
               </div>
 

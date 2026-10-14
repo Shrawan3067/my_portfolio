@@ -5,37 +5,39 @@ const ThemeContext = createContext();
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
-  useEffect(() => {
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setIsDarkMode(savedTheme === 'dark');
-    } else {
-      // Check system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setIsDarkMode(prefersDark);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    // Check saved theme in localStorage
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        return savedTheme === 'dark';
+      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
-  }, []);
+    return true;
+  });
 
   useEffect(() => {
-    // Update HTML class and localStorage
+    const root = document.documentElement;
+    const body = document.body;
+
     if (isDarkMode) {
-      // Add the `dark` class on the root (for Tailwind) and ensure body does not have `light`
-      document.documentElement.classList.add('dark');
-      document.body.classList.remove('light');
+      root.classList.add('dark');
+      root.classList.remove('light');
+      body.classList.add('dark');
+      body.classList.remove('light');
       localStorage.setItem('theme', 'dark');
     } else {
-      // Remove `dark` and add `light` on the body so the project's light-mode CSS applies
-      document.documentElement.classList.remove('dark');
-      document.body.classList.add('light');
+      root.classList.remove('dark');
+      root.classList.add('light');
+      body.classList.remove('dark');
+      body.classList.add('light');
       localStorage.setItem('theme', 'light');
     }
   }, [isDarkMode]);
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
+    setIsDarkMode((prev) => !prev);
   };
 
   return (

@@ -357,16 +357,16 @@ const ProjectDetail = () => {
   const project = projectDetails[projectId] || projectDetails['caliwo'];
 
   return (
-    <div className="min-h-screen bg-[#090d16] text-slate-100 pt-28 pb-20">
+    <div className="min-h-screen bg-[#f8fafc] dark:bg-[#090d16] text-slate-900 dark:text-slate-100 pt-28 pb-20 transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 max-w-5xl">
         
         {/* Navigation Breadcrumb */}
         <div className="mb-8 flex items-center justify-between">
           <Link
             to="/#projects"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
           >
-            <ArrowLeft className="w-4 h-4 text-indigo-400" />
+            <ArrowLeft className="w-4 h-4 text-indigo-500" />
             <span>Back to Projects</span>
           </Link>
 
@@ -387,25 +387,25 @@ const ProjectDetail = () => {
         <div className="glass-card p-6 sm:p-10 mb-10 overflow-hidden relative">
           <div className="space-y-4 mb-8">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/15 text-indigo-400 border border-indigo-500/30">
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/30">
                 {project.category}
               </span>
-              <span className="px-3 py-1 rounded-full text-xs font-medium bg-slate-800 text-slate-300">
+              <span className="px-3 py-1 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
                 {project.status}
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               {project.title}
             </h1>
 
-            <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-3xl font-normal">
+            <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed max-w-3xl font-normal">
               {project.description}
             </p>
           </div>
 
           {/* Featured Image */}
-          <div className="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-950 aspect-video relative">
+          <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl dark:shadow-2xl bg-slate-100 dark:bg-slate-950 aspect-video relative">
             <img
               src={project.image}
               alt={project.title}
@@ -414,26 +414,26 @@ const ProjectDetail = () => {
           </div>
 
           {/* Metadata quick bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-8 border-t border-slate-800/80">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-8 border-t border-slate-200 dark:border-slate-800/80">
             <div>
-              <div className="text-xs font-medium text-slate-400">Duration</div>
-              <div className="text-sm font-bold text-white mt-1">{project.duration}</div>
+              <div className="text-xs font-medium text-slate-500 dark:text-slate-400">Duration</div>
+              <div className="text-sm font-bold text-slate-900 dark:text-white mt-1">{project.duration}</div>
             </div>
             <div>
-              <div className="text-xs font-medium text-slate-400">Role</div>
-              <div className="text-sm font-bold text-white mt-1">{project.teamSize}</div>
+              <div className="text-xs font-medium text-slate-500 dark:text-slate-400">Role</div>
+              <div className="text-sm font-bold text-slate-900 dark:text-white mt-1">{project.teamSize}</div>
             </div>
             <div>
-              <div className="text-xs font-medium text-slate-400">Timeline</div>
-              <div className="text-sm font-bold text-white mt-1">{project.startDate} – {project.endDate}</div>
+              <div className="text-xs font-medium text-slate-500 dark:text-slate-400">Timeline</div>
+              <div className="text-sm font-bold text-slate-900 dark:text-white mt-1">{project.startDate} – {project.endDate}</div>
             </div>
             <div>
-              <div className="text-xs font-medium text-slate-400">Codebase</div>
+              <div className="text-xs font-medium text-slate-500 dark:text-slate-400">Codebase</div>
               <a
                 href={project.githubLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-bold text-cyan-400 hover:underline flex items-center gap-1 mt-1"
+                className="text-sm font-bold text-indigo-600 dark:text-cyan-400 hover:underline flex items-center gap-1 mt-1"
               >
                 <span>GitHub Repo</span>
                 <ExternalLink className="w-3 h-3" />
@@ -450,26 +450,26 @@ const ProjectDetail = () => {
             
             {/* Overview */}
             <div className="glass-card p-6 sm:p-8">
-              <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2.5">
-                <Lightbulb className="w-5 h-5 text-indigo-400" />
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+                <Lightbulb className="w-5 h-5 text-indigo-500" />
                 Project In-Depth Overview
               </h3>
-              <p className="text-slate-300 leading-relaxed text-sm sm:text-base font-normal">
+              <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base font-normal">
                 {project.longDescription}
               </p>
             </div>
 
             {/* Key Features */}
             <div className="glass-card p-6 sm:p-8">
-              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2.5">
-                <Zap className="w-5 h-5 text-cyan-400" />
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2.5">
+                <Zap className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
                 Architectural Highlights & Features
               </h3>
               <div className="space-y-3">
                 {project.features.map((feature, idx) => (
                   <div key={idx} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-1" />
-                    <span className="text-sm text-slate-200 leading-relaxed">{feature}</span>
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-1" />
+                    <span className="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -477,26 +477,26 @@ const ProjectDetail = () => {
 
             {/* Technical Challenges & Solutions */}
             <div className="glass-card p-6 sm:p-8">
-              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2.5">
-                <Target className="w-5 h-5 text-amber-400" />
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2.5">
+                <Target className="w-5 h-5 text-amber-500" />
                 Challenges & Engineering Solutions
               </h3>
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-xs font-mono uppercase text-amber-400 tracking-wider mb-2 font-bold">
+                  <h4 className="text-xs font-mono uppercase text-amber-600 dark:text-amber-400 tracking-wider mb-2 font-bold">
                     Technical Challenges
                   </h4>
-                  <ul className="list-disc list-inside space-y-1.5 text-sm text-slate-300">
+                  <ul className="list-disc list-inside space-y-1.5 text-sm text-slate-700 dark:text-slate-300">
                     {project.challenges.map((challenge, idx) => (
                       <li key={idx} className="leading-relaxed">{challenge}</li>
                     ))}
                   </ul>
                 </div>
-                <div className="pt-4 border-t border-slate-800">
-                  <h4 className="text-xs font-mono uppercase text-emerald-400 tracking-wider mb-2 font-bold">
+                <div className="pt-4 border-t border-slate-200 dark:border-slate-800">
+                  <h4 className="text-xs font-mono uppercase text-emerald-600 dark:text-emerald-400 tracking-wider mb-2 font-bold">
                     Implemented Solutions
                   </h4>
-                  <ul className="list-disc list-inside space-y-1.5 text-sm text-slate-300">
+                  <ul className="list-disc list-inside space-y-1.5 text-sm text-slate-700 dark:text-slate-300">
                     {project.solutions.map((sol, idx) => (
                       <li key={idx} className="leading-relaxed">{sol}</li>
                     ))}
@@ -507,15 +507,15 @@ const ProjectDetail = () => {
 
             {/* Achievements & Outcomes */}
             <div className="glass-card p-6 sm:p-8">
-              <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2.5">
-                <Award className="w-5 h-5 text-indigo-400" />
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+                <Award className="w-5 h-5 text-indigo-500" />
                 Measurable Impact & Achievements
               </h3>
               <div className="space-y-2.5">
                 {project.achievements.map((achieve, idx) => (
-                  <div key={idx} className="p-3 rounded-xl bg-slate-950/60 border border-slate-800/80 flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-cyan-400"></span>
-                    <span className="text-sm text-slate-200">{achieve}</span>
+                  <div key={idx} className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 flex items-center gap-3">
+                    <span className="w-2 h-2 rounded-full bg-cyan-500 dark:bg-cyan-400"></span>
+                    <span className="text-sm text-slate-800 dark:text-slate-200">{achieve}</span>
                   </div>
                 ))}
               </div>
@@ -528,17 +528,17 @@ const ProjectDetail = () => {
             
             {/* Tech Stack Box */}
             <div className="glass-card p-6 space-y-6">
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                <Code className="w-4 h-4 text-cyan-400" />
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <Code className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                 Technology Stack
               </h3>
 
               {project.technologies.frontend && (
                 <div>
-                  <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Frontend</div>
+                  <div className="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Frontend</div>
                   <div className="flex flex-wrap gap-1.5">
                     {project.technologies.frontend.map((t, idx) => (
-                      <span key={idx} className="px-2.5 py-1 rounded-md text-xs font-mono bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+                      <span key={idx} className="px-2.5 py-1 rounded-md text-xs font-mono bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/20">
                         {t}
                       </span>
                     ))}
@@ -548,10 +548,10 @@ const ProjectDetail = () => {
 
               {project.technologies.backend && (
                 <div>
-                  <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Backend & Database</div>
+                  <div className="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Backend & Database</div>
                   <div className="flex flex-wrap gap-1.5">
                     {project.technologies.backend.map((t, idx) => (
-                      <span key={idx} className="px-2.5 py-1 rounded-md text-xs font-mono bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                      <span key={idx} className="px-2.5 py-1 rounded-md text-xs font-mono bg-cyan-50 dark:bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-500/20">
                         {t}
                       </span>
                     ))}
@@ -561,10 +561,10 @@ const ProjectDetail = () => {
 
               {project.technologies.tools && (
                 <div>
-                  <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Tools & DevOps</div>
+                  <div className="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Tools & DevOps</div>
                   <div className="flex flex-wrap gap-1.5">
                     {project.technologies.tools.map((t, idx) => (
-                      <span key={idx} className="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300 border border-slate-700/60">
+                      <span key={idx} className="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
                         {t}
                       </span>
                     ))}
@@ -575,7 +575,7 @@ const ProjectDetail = () => {
 
             {/* Quick Links Card */}
             <div className="glass-card p-6 space-y-3">
-              <h4 className="text-sm font-bold text-white mb-2">Quick Actions</h4>
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-2">Quick Actions</h4>
               {project.demoLink && (
                 <a
                   href={project.demoLink}
