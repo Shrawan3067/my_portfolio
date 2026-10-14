@@ -17,38 +17,40 @@ export default {
         gray: 'rgb(var(--gray) / <alpha-value>)',
       },
       fontFamily: {
-        inter: ['Inter', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
+        inter: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
         'blink': 'blink 0.7s infinite',
-        'border-glow': 'borderGlow 2s linear infinite',
-        'icon-pulse': 'iconPulse 1.5s ease infinite',
-        'fade-in': 'fadeIn 1s ease forwards',
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'gradient': 'gradient 8s ease infinite',
+        'shimmer': 'shimmer 2.5s linear infinite',
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
+          '50%': { transform: 'translateY(-14px)' },
         },
         blink: {
           '0%, 100%': { opacity: 1 },
           '50%': { opacity: 0 },
         },
-        borderGlow: {
-          '0%': { opacity: 0.7 },
-          '50%': { opacity: 1 },
-          '100%': { opacity: 0.7 },
+        gradient: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
         },
-        iconPulse: {
-          '0%': { transform: 'scale(1.1) rotate(10deg)' },
-          '50%': { transform: 'scale(1.3) rotate(10deg)' },
-          '100%': { transform: 'scale(1.1) rotate(10deg)' },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
         },
-        fadeIn: {
-          'from': { opacity: 0, transform: 'translateY(20px)' },
-          'to': { opacity: 1, transform: 'translateY(0)' },
-        },
+      },
+      boxShadow: {
+        'glow-primary': '0 0 30px -5px rgba(99, 102, 241, 0.3)',
+        'glow-secondary': '0 0 30px -5px rgba(6, 182, 212, 0.3)',
+        'glow-emerald': '0 0 30px -5px rgba(16, 185, 129, 0.3)',
+        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
       },
     },
   },

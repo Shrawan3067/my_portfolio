@@ -2,283 +2,253 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Skills = () => {
-  const [hoveredCategory, setHoveredCategory] = useState(null);
-  const [selectedSkill, setSelectedSkill] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const skillCategories = [
     {
+      id: "languages",
       title: "Languages",
       icon: "fas fa-code",
-      color: "from-blue-500 to-blue-600",
-      shadow: "shadow-blue-500/20",
+      color: "from-blue-500 to-indigo-600",
       skills: [
-        { name: "Java", level: 90, icon: "fab fa-java" },
-        { name: "C++", level: 75, icon: "fas fa-terminal" },
-        { name: "JavaScript", level: 95, icon: "fab fa-js" },
-        { name: "SQL", level: 85, icon: "fas fa-database" },
+        { name: "JavaScript (ES6+)", level: 95, detail: "Async/await, Closures, DOM, Modern ESNext" },
+        { name: "TypeScript", level: 90, detail: "Generics, Strict Typing, Interfaces, Full Stack Types" },
+        { name: "Java", level: 88, detail: "Core Java, OOP, Collections, Multithreading, Swing" },
+        { name: "SQL", level: 90, detail: "Complex Queries, Joins, Aggregations, Performance" },
       ],
     },
     {
+      id: "frontend",
       title: "Frontend",
-      icon: "fas fa-palette",
-      color: "from-purple-500 to-purple-600",
-      shadow: "shadow-purple-500/20",
+      icon: "fas fa-desktop",
+      color: "from-purple-500 to-pink-600",
       skills: [
-        { name: "React.js", level: 95, icon: "fab fa-react" },
-        { name: "TypeScript", level: 85, icon: "fab fa-js" },
-        { name: "Redux", level: 80, icon: "fas fa-cube" },
-        { name: "HTML5", level: 95, icon: "fab fa-html5" },
-        { name: "CSS3", level: 90, icon: "fab fa-css3-alt" },
-        { name: "Tailwind", level: 95, icon: "fab fa-css3" },
-        { name: "Bootstrap", level: 85, icon: "fab fa-bootstrap" },
+        { name: "React.js", level: 95, detail: "Hooks, Custom Hooks, Context, Virtual DOM, React 18" },
+        { name: "Redux Toolkit", level: 85, detail: "Global State, Slices, RTK Query, Predictable Stores" },
+        { name: "HTML5", level: 95, detail: "Semantic Elements, Accessibility, Web APIs" },
+        { name: "CSS3", level: 92, detail: "Flexbox, Grid, Keyframes, Responsive Layouts" },
+        { name: "Tailwind CSS", level: 95, detail: "Utility Architecture, Custom Design Systems, JIT" },
+        { name: "Bootstrap", level: 85, detail: "Grid System, Rapid Prototyping, Component Modals" },
+        { name: "Responsive Design", level: 95, detail: "Mobile-First, Fluid Breakpoints, Touch Gestures" },
       ],
     },
     {
+      id: "backend",
       title: "Backend",
       icon: "fas fa-server",
-      color: "from-green-500 to-green-600",
-      shadow: "shadow-green-500/20",
+      color: "from-emerald-500 to-teal-600",
       skills: [
-        { name: "Node.js", level: 90, icon: "fab fa-node" },
-        { name: "Express.js", level: 85, icon: "fas fa-server" },
-        { name: "REST API", level: 88, icon: "fas fa-plug" },
-        { name: "GraphQL", level: 75, icon: "fas fa-project-diagram" },
+        { name: "Node.js", level: 92, detail: "Event Loop, Streams, Asynchronous Architecture" },
+        { name: "Express.js", level: 92, detail: "Modular Routing, Custom Middleware, Controllers" },
+        { name: "REST API Development", level: 95, detail: "Resource Modeling, Versioning, Status Codes" },
+        { name: "JWT Authentication", level: 90, detail: "Token Signing, Expiry, Bearer Headers, RBAC" },
+        { name: "Middleware", level: 90, detail: "Error Handling, Auth Guards, Rate Limiting" },
+        { name: "Request Validation", level: 90, detail: "Payload Sanitization, Schema Enforcers, Security" },
       ],
     },
     {
-      title: "Database",
+      id: "databases",
+      title: "Databases",
       icon: "fas fa-database",
-      color: "from-orange-500 to-orange-600",
-      shadow: "shadow-orange-500/20",
+      color: "from-amber-500 to-orange-600",
       skills: [
-        { name: "MySQL", level: 85, icon: "fas fa-database" },
-        { name: "MongoDB", level: 80, icon: "fas fa-leaf" },
-        { name: "PostgreSQL", level: 75, icon: "fas fa-elephant" },
+        { name: "PostgreSQL", level: 88, detail: "Relational Modeling, Foreign Keys, ACID compliance" },
+        { name: "MongoDB", level: 92, detail: "Document Schemas, Mongoose, Aggregation Pipelines" },
+        { name: "MySQL", level: 88, detail: "Relational Schemas, Primary Keys, Normalized Tables" },
+        { name: "Indexing & Query Optimization", level: 90, detail: "Compound Indexes, Execution Plans, Latency Drops" },
+        { name: "Pagination", level: 95, detail: "Cursor & Offset Pagination (10× Latency Gain at GharSeDeal)" },
+        { name: "Schema Design", level: 90, detail: "Data Normalization, Denormalization tradeoffs" },
       ],
     },
     {
-      title: "Tools & DevOps",
-      icon: "fas fa-tools",
-      color: "from-red-500 to-red-600",
-      shadow: "shadow-red-500/20",
+      id: "testing-tools",
+      title: "Testing & Tools",
+      icon: "fas fa-screwdriver-wrench",
+      color: "from-cyan-500 to-blue-600",
       skills: [
-        { name: "Git", level: 95, icon: "fab fa-git-alt" },
-        { name: "GitHub", level: 95, icon: "fab fa-github" },
-        { name: "Docker", level: 70, icon: "fab fa-docker" },
-        { name: "VS Code", level: 95, icon: "fas fa-code" },
+        { name: "Jest", level: 85, detail: "Unit Testing, Assertions, Mocking, Test Runners" },
+        { name: "Postman", level: 95, detail: "API Testing, Environment Variables, Automated Collections" },
+        { name: "Git", level: 95, detail: "Branching, Rebasing, Conflict Resolution, Clean Commits" },
+        { name: "GitHub", level: 95, detail: "Pull Requests, Code Reviews, Actions CI/CD" },
+        { name: "Debugging", level: 92, detail: "Chrome DevTools, Network Throttling, Memory Profiling" },
       ],
     },
     {
-      title: "Soft Skills",
-      icon: "fas fa-users",
-      color: "from-pink-500 to-pink-600",
-      shadow: "shadow-pink-500/20",
+      id: "core-cs",
+      title: "Core CS",
+      icon: "fas fa-brain",
+      color: "from-indigo-500 to-purple-600",
       skills: [
-        { name: "Communication", level: 95, icon: "fas fa-comments" },
-        { name: "Team Work", level: 90, icon: "fas fa-users" },
-        { name: "Problem Solving", level: 95, icon: "fas fa-lightbulb" },
-        { name: "Adaptability", level: 85, icon: "fas fa-sync" },
+        { name: "Data Structures & Algorithms", level: 95, detail: "600+ LeetCode problems solved, Graph, Tree, DP" },
+        { name: "Object-Oriented Programming (OOP)", level: 92, detail: "Inheritance, Polymorphism, Encapsulation, SOLID" },
+        { name: "DBMS", level: 90, detail: "Concurrency Control, Indexing, Normal Forms, Transactions" },
+        { name: "Operating Systems", level: 85, detail: "Process Management, Threads, Deadlocks, Memory" },
+        { name: "Computer Networks", level: 85, detail: "TCP/IP, HTTP/HTTPS, WebSockets, DNS, OSI Model" },
       ],
     },
   ];
 
-  const getSkillLevelColor = (level) => {
-    if (level >= 90) return "text-emerald-400";
-    if (level >= 80) return "text-blue-400";
-    if (level >= 70) return "text-yellow-400";
-    return "text-red-400";
-  };
+  const categories = [
+    { id: "all", label: "All Skills" },
+    { id: "languages", label: "Languages" },
+    { id: "frontend", label: "Frontend" },
+    { id: "backend", label: "Backend" },
+    { id: "databases", label: "Databases" },
+    { id: "testing-tools", label: "Testing & Tools" },
+    { id: "core-cs", label: "Core CS" },
+  ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-  };
+  // Filtering
+  const filteredCategories = skillCategories
+    .filter((cat) => selectedCategory === "all" || cat.id === selectedCategory)
+    .map((cat) => ({
+      ...cat,
+      skills: cat.skills.filter(
+        (skill) =>
+          skill.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          skill.detail.toLowerCase().includes(searchQuery.toLowerCase())
+      ),
+    }))
+    .filter((cat) => cat.skills.length > 0);
 
   return (
     <section
       id="skills"
-      className="py-24 relative overflow-hidden bg-dark transition-colors duration-300"
+      className="py-24 relative overflow-hidden bg-[#090d16] transition-colors duration-300"
     >
-      {/* Background Decorations */}
+      {/* Background Lighting */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[100px]"></div>
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[150px]"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[150px]"></div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
-            <p className="text-primary font-semibold text-lg uppercase tracking-wider mb-4">
-              Technical Expertise
-            </p>
-
-            <div className="section-title mb-6">
+            <div className="flex flex-col items-center">
+            <span className="section-badge">
+              <i className="fas fa-microchip text-[10px]"></i>
+              Technical Stack
+            </span>
+            <div className="section-title">
               <h2>Skills & Technologies</h2>
             </div>
-
-            <p className="text-gray mt-5 max-w-2xl mx-auto font-light text-lg">
-              A modern technology stack focused on scalable frontend, backend,
-              cloud, and product development.
+            </div>
+            <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mt-4 font-normal">
+              Direct technical competencies categorized precisely according to my verified curriculum vitae.
             </p>
           </motion.div>
         </div>
 
-        {/* Skills Grid */}
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
-        >
-          {skillCategories.map((category, idx) => (
+        {/* Filter Controls Bar */}
+        <div className="max-w-4xl mx-auto mb-12 flex flex-col md:flex-row items-center justify-between gap-4">
+          
+          {/* Category Tabs */}
+          <div className="flex flex-wrap justify-center gap-1.5 bg-slate-900/80 backdrop-blur-xl p-1.5 rounded-2xl border border-slate-800 shadow-xl">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
+                  selectedCategory === cat.id
+                    ? "bg-gradient-to-r from-indigo-500 to-cyan-500 text-white shadow-md shadow-indigo-500/30"
+                    : "text-slate-400 hover:text-white hover:bg-slate-800/60"
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Search Box */}
+          <div className="relative w-full md:w-64">
+            <i className="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+            <input
+              type="text"
+              placeholder="Filter skill or keyword..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-9 pr-4 py-2 rounded-xl text-xs sm:text-sm bg-slate-900/80 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs"
+              >
+                <i className="fas fa-times"></i>
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Skills Cards Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          {filteredCategories.map((category) => (
             <motion.div
-              variants={itemVariants}
-              key={idx}
-              className="glass-card p-6 group relative overflow-hidden"
-              onMouseEnter={() => setHoveredCategory(category.title)}
-              onMouseLeave={() => setHoveredCategory(null)}
+              key={category.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              className="glass-card p-6 flex flex-col justify-between group hover:-translate-y-1"
             >
-              {/* Hover Gradient Background */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-[0.05] transition-opacity duration-500`}
-              ></div>
-
-              {/* Header */}
-              <div className="flex items-center gap-4 mb-8 relative z-10">
-                <div
-                  className={`w-14 h-14 bg-gradient-to-br ${category.color} rounded-2xl flex items-center justify-center text-white shadow-lg ${category.shadow} group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <i className={`${category.icon} text-xl`}></i>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold text-light group-hover:text-primary transition-colors duration-300">
-                    {category.title}
-                  </h3>
-                  <p className="text-sm text-gray mt-1">
-                    {category.skills.length} Technologies
-                  </p>
-                </div>
-              </div>
-
-              {/* Skills List */}
-              <div className="space-y-4 relative z-10">
-                {category.skills.map((skill, skillIdx) => (
+              <div>
+                {/* Header */}
+                <div className="flex items-center gap-3.5 mb-6 pb-4 border-b border-slate-800/80">
                   <div
-                    key={skillIdx}
-                    className="relative p-4 rounded-xl bg-dark-light/50 border border-gray/20 hover:border-primary/50 hover:bg-dark-light transition-all duration-300 cursor-pointer"
-                    onClick={() =>
-                      setSelectedSkill(
-                        selectedSkill === `${category.title}-${skill.name}`
-                          ? null
-                          : `${category.title}-${skill.name}`
-                      )
-                    }
+                    className={`w-11 h-11 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center text-white text-base shadow-md`}
                   >
-                    {/* Top Row */}
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center gap-3">
-                        <div
-                          className={`w-10 h-10 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center text-white shadow-md`}
-                        >
-                          <i className={skill.icon}></i>
-                        </div>
+                    <i className={category.icon}></i>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">
+                      {category.title}
+                    </h3>
+                    <p className="text-xs text-slate-400 font-mono">
+                      {category.skills.length} Technical Skills
+                    </p>
+                  </div>
+                </div>
 
-                        <div>
-                          <h4 className="font-semibold text-light">
-                            {skill.name}
-                          </h4>
-                          <p className="text-xs text-gray font-light">
-                            Professional Skill
-                          </p>
-                        </div>
+                {/* Skills List */}
+                <div className="space-y-4">
+                  {category.skills.map((skill, sIdx) => (
+                    <div key={sIdx} className="space-y-1.5">
+                      <div className="flex items-center justify-between text-xs sm:text-sm">
+                        <span className="font-semibold text-slate-200">{skill.name}</span>
+                        <span className="font-mono text-cyan-400 font-bold text-xs">{skill.level}%</span>
                       </div>
 
-                      <span className={`text-sm font-bold ${getSkillLevelColor(skill.level)}`}>
-                        {skill.level}%
-                      </span>
+                      {/* Progress Bar */}
+                      <div className="w-full h-1.5 bg-slate-950 rounded-full overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.8, delay: sIdx * 0.05 }}
+                          className={`h-full bg-gradient-to-r ${category.color} rounded-full`}
+                        ></motion.div>
+                      </div>
+
+                      {/* Detail Snippet */}
+                      <p className="text-[11px] text-slate-400 font-normal leading-tight">
+                        {skill.detail}
+                      </p>
                     </div>
-
-                    {/* Progress Bar */}
-                    <div className="w-full h-1.5 bg-dark rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                        className={`h-full bg-gradient-to-r ${category.color} rounded-full`}
-                      ></motion.div>
-                    </div>
-
-                    {/* Expanded Details */}
-                    <AnimatePresence>
-                      {selectedSkill === `${category.title}-${skill.name}` && (
-                        <motion.div 
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          className="mt-4 pt-4 border-t border-gray/20 overflow-hidden"
-                        >
-                          <div className="flex items-center justify-between">
-                            <p className="text-sm text-gray font-light">
-                              Proficiency Level
-                            </p>
-                            <span className={`text-sm font-semibold ${getSkillLevelColor(skill.level)}`}>
-                              {skill.level >= 90
-                                ? "Expert"
-                                : skill.level >= 80
-                                ? "Advanced"
-                                : skill.level >= 70
-                                ? "Intermediate"
-                                : "Beginner"}
-                            </span>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ))}
-              </div>
-
-              {/* Active Indicator */}
-              {hoveredCategory === category.title && (
-                <div className="absolute top-6 right-6">
-                  <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${category.color} animate-pulse`}></div>
+                  ))}
                 </div>
-              )}
+              </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Bottom Text */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-20"
-        >
-          <p className="text-gray text-lg font-light">
-            Constantly learning, building, and improving modern technologies.
-          </p>
-        </motion.div>
       </div>
     </section>
   );

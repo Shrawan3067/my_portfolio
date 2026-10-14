@@ -1,309 +1,316 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import resume from "../assets/Shrawan_Sah_Resume.pdf";
+import resume from "../assets/Shrawan_Full_Stack.pdf";
+import profile from "../assets/github.jpg";
 
 const About = () => {
-  const [activeTab, setActiveTab] = useState("about");
+  const [activeTab, setActiveTab] = useState("overview");
 
   const tabs = [
-    { id: "about", label: "About Me", icon: "fas fa-user" },
-    { id: "details", label: "Details", icon: "fas fa-info-circle" },
-    { id: "contact", label: "Contact", icon: "fas fa-address-card" },
+    { id: "overview", label: "Professional Overview", icon: "fas fa-user-tie" },
+    { id: "strengths", label: "Core Competencies", icon: "fas fa-bolt" },
+    { id: "facts", label: "Quick Facts", icon: "fas fa-id-card" },
   ];
-
-  const contentVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-    exit: { opacity: 0, y: -10, transition: { duration: 0.3 } }
-  };
 
   return (
     <section
       id="about"
-      className="py-24 relative overflow-hidden bg-dark transition-colors duration-300"
+      className="py-24 relative overflow-hidden bg-[#090d16] transition-colors duration-300"
     >
-      {/* Background Decoration */}
+      {/* Background Lighting */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-72 h-72 bg-primary/10 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[100px]"></div>
+        <div className="absolute top-1/3 left-10 w-96 h-96 bg-indigo-600/10 rounded-full blur-[140px]"></div>
+        <div className="absolute bottom-1/3 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-[140px]"></div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
-            <p className="text-primary font-semibold text-lg uppercase tracking-wider mb-4">
-              Introduction
-            </p>
-
-            <div className="section-title mb-6">
-              <h2>About Me</h2>
+            <div className="flex flex-col items-center">
+              <span className="section-badge">
+              <i className="fas fa-terminal text-[10px]"></i>
+              About Me
+            </span>
+            <div className="section-title">
+              <h2>Engineering Profile</h2>
             </div>
-
-            <p className="text-gray text-lg max-w-2xl mx-auto mt-5 font-light">
-              Get to know more about my background, skills, and passion for software development.
+            </div>
+            <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mt-4 font-normal">
+              A glimpse into my background, full-stack software experience, and engineering principles.
             </p>
           </motion.div>
         </div>
 
-        {/* Tabs */}
-        <div className="flex justify-center mb-14">
-          <div className="inline-flex bg-dark-light/50 backdrop-blur-xl rounded-2xl p-2 border border-gray/20 shadow-xl">
+        {/* Tab Selection */}
+        <div className="flex justify-center mb-12">
+          <div className="inline-flex bg-slate-900/80 backdrop-blur-xl rounded-2xl p-1.5 border border-slate-800 shadow-xl">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center gap-2 ${
+                className={`px-4 sm:px-6 py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all duration-300 flex items-center gap-2 ${
                   activeTab === tab.id
-                    ? "bg-primary text-white shadow-lg shadow-primary/30"
-                    : "text-gray hover:text-light hover:bg-dark-light"
+                    ? "bg-gradient-to-r from-indigo-500 to-cyan-500 text-white shadow-lg shadow-indigo-500/25 font-semibold"
+                    : "text-slate-400 hover:text-white hover:bg-slate-800/60"
                 }`}
               >
                 <i className={tab.icon}></i>
-                <span className="hidden sm:inline">{tab.label}</span>
+                <span>{tab.label}</span>
               </button>
             ))}
           </div>
         </div>
 
-        {/* Main Content */}
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left Side */}
-          <motion.div 
+        {/* Main Grid */}
+        <div className="grid lg:grid-cols-12 gap-10 items-start max-w-6xl mx-auto">
+          
+          {/* Left Column (5 cols): Profile Card */}
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-8"
+            className="lg:col-span-5 space-y-6"
           >
-            {/* Profile Image */}
-            <div className="relative group">
-              {/* Glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-3xl blur-2xl scale-105 group-hover:opacity-100 opacity-60 transition-opacity duration-500"></div>
-
-              {/* Image */}
-              <div className="relative overflow-hidden rounded-3xl border border-gray/20 shadow-2xl glass-card">
+            {/* Visual Glass Card */}
+            <div className="glass-card p-6 relative overflow-hidden group">
+              <div className="relative aspect-square overflow-hidden rounded-2xl mb-6 border border-slate-800 bg-slate-950">
                 <img
-                  src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
-                  alt="Shrawan Sah"
-                  className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
+                  src={profile}
+                  alt="Shrawan Kumar Sah"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent"></div>
-
-                {/* Floating Badge */}
-                <div className="absolute top-5 right-5">
-                  <div className="px-5 py-2 rounded-full bg-dark/50 backdrop-blur-md border border-gray/20 text-light text-sm font-medium flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                    Available for Work
-                  </div>
-                </div>
-
-                {/* Bottom Intro */}
-                <div className="absolute bottom-8 left-8">
-                  <h3 className="text-light text-4xl font-bold mb-2 tracking-tight">
-                    Shrawan Sah
-                  </h3>
-                  <p className="text-gray text-lg font-light">
-                    Full Stack Developer & Software Engineer
-                  </p>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-xl font-bold text-white">Shrawan Kumar Sah</h3>
+                  <p className="text-xs text-cyan-400 font-mono">Full Stack Engineer</p>
                 </div>
               </div>
-            </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-4">
-              {[
-                { count: "2+", label: "Months Experience", color: "text-primary" },
-                { count: "10+", label: "Projects", color: "text-secondary" },
-                { count: "100%", label: "Dedication", color: "text-green-500" }
-              ].map((stat, i) => (
-                <div key={i} className="glass-card p-5 text-center transition-all hover:-translate-y-1">
-                  <div className={`text-3xl font-black mb-1 ${stat.color}`}>
-                    {stat.count}
-                  </div>
-                  <div className="text-sm text-gray font-medium">
-                    {stat.label}
-                  </div>
+              {/* Bio Highlights */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between text-xs py-2 border-b border-slate-800/80">
+                  <span className="text-slate-400">Current Role</span>
+                  <span className="text-white font-medium">Founder & Software Engineer</span>
                 </div>
-              ))}
+                <div className="flex items-center justify-between text-xs py-2 border-b border-slate-800/80">
+                  <span className="text-slate-400">Company</span>
+                  <span className="text-indigo-400 font-semibold">GharSeDeal</span>
+                </div>
+                <div className="flex items-center justify-between text-xs py-2 border-b border-slate-800/80">
+                  <span className="text-slate-400">Education</span>
+                  <span className="text-slate-200">B.Tech CSE (CGPA: 7.30)</span>
+                </div>
+                <div className="flex items-center justify-between text-xs py-2">
+                  <span className="text-slate-400">University</span>
+                  <span className="text-slate-200">Lovely Professional University</span>
+                </div>
+              </div>
+
+              {/* Download Resume Button */}
+              <div className="mt-6 pt-4 border-t border-slate-800/80">
+                <a
+                  href={resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary w-full justify-center"
+                >
+                  <i className="fas fa-file-download text-sm"></i>
+                  <span>Download Curriculum Vitae</span>
+                </a>
+              </div>
             </div>
           </motion.div>
 
-          {/* Right Side */}
-          <div className="space-y-8 h-full">
+          {/* Right Column (7 cols): Dynamic Tab Content */}
+          <div className="lg:col-span-7">
             <AnimatePresence mode="wait">
-              {/* ABOUT TAB */}
-              {activeTab === "about" && (
+              {/* TAB 1: OVERVIEW */}
+              {activeTab === "overview" && (
                 <motion.div
-                  key="about"
-                  variants={contentVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
+                  key="overview"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.35 }}
                   className="space-y-6"
                 >
-                  <div className="glass-card p-8">
-                    <h3 className="text-3xl font-bold text-light mb-5 flex items-center gap-3">
-                      <i className="fas fa-code text-primary"></i>
-                      Software Engineer
-                    </h3>
+                  {/* Summary Box */}
+                  <div className="glass-card p-6 sm:p-8">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+                        <i className="fas fa-code text-sm"></i>
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-bold text-white">Executive Summary</h4>
+                        <p className="text-xs text-slate-400">From verified Curriculum Vitae</p>
+                      </div>
+                    </div>
+                    
+                    <p className="text-slate-300 leading-relaxed text-sm sm:text-base font-normal mb-4">
+                      Full Stack Engineer with hands-on experience building and improving end-to-end web applications using <strong className="text-white">React.js</strong>, <strong className="text-white">TypeScript</strong>, <strong className="text-white">Node.js</strong>, <strong className="text-white">Express.js</strong>, and <strong className="text-white">SQL/NoSQL databases</strong>.
+                    </p>
 
-                    <p className="text-gray leading-relaxed text-lg font-light">
-                      I'm a passionate Computer Science student at Lovely Professional University with strong expertise in
-                      <span className="text-primary font-medium"> Full Stack Web Development</span> and
-                      <span className="text-secondary font-medium"> Java Development</span>. I love building scalable, responsive, and modern applications using cutting-edge technologies and clean coding practices.
+                    <p className="text-slate-300 leading-relaxed text-sm sm:text-base font-normal">
+                      Experienced in REST API development, authentication, database design, and performance optimization, including a <span className="text-cyan-400 font-semibold">10× improvement</span> in marketplace listing API response latency. Strong foundation in data structures, algorithms, and software engineering principles.
                     </p>
                   </div>
 
-                  {/* What I Love */}
-                  <div className="glass-card p-8">
-                    <h4 className="text-2xl font-bold text-light mb-6 flex items-center gap-3">
-                      <i className="fas fa-heart text-red-500"></i>
-                      What I Love
-                    </h4>
+                  {/* Core Value Props */}
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="glass-panel p-5">
+                      <div className="w-9 h-9 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-3">
+                        <i className="fas fa-bolt text-sm"></i>
+                      </div>
+                      <h5 className="text-white font-semibold text-sm mb-1">Performance & Scale</h5>
+                      <p className="text-xs text-slate-400 leading-relaxed">
+                        Optimized database indexing, query pipelines, and server-side pagination for high throughput.
+                      </p>
+                    </div>
 
-                    <div className="grid grid-cols-2 gap-5">
-                      {[
-                        { icon: "fas fa-laptop-code", title: "Clean Code" },
-                        { icon: "fas fa-mobile-alt", title: "Responsive UI" },
-                        { icon: "fas fa-rocket", title: "Performance" },
-                        { icon: "fas fa-palette", title: "UI/UX Design" },
-                      ].map((item, index) => (
-                        <div key={index} className="flex items-center gap-4 p-4 rounded-2xl bg-dark-light/50 border border-gray/20 transition-colors hover:bg-primary/5 hover:border-primary/20">
-                          <div className="w-12 h-12 rounded-xl flex items-center justify-center text-lg bg-primary/10 text-primary">
-                            <i className={item.icon}></i>
-                          </div>
-                          <span className="font-semibold text-light">
-                            {item.title}
-                          </span>
-                        </div>
-                      ))}
+                    <div className="glass-panel p-5">
+                      <div className="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-3">
+                        <i className="fas fa-cubes text-sm"></i>
+                      </div>
+                      <h5 className="text-white font-semibold text-sm mb-1">Modern UI & React</h5>
+                      <p className="text-xs text-slate-400 leading-relaxed">
+                        Crafting reusable component architectures with TypeScript, Tailwind CSS, and state management.
+                      </p>
+                    </div>
+
+                    <div className="glass-panel p-5">
+                      <div className="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-3">
+                        <i className="fas fa-server text-sm"></i>
+                      </div>
+                      <h5 className="text-white font-semibold text-sm mb-1">Robust Backend APIs</h5>
+                      <p className="text-xs text-slate-400 leading-relaxed">
+                        Modular REST architectures, JWT authentication, request validation, and clean middleware layers.
+                      </p>
+                    </div>
+
+                    <div className="glass-panel p-5">
+                      <div className="w-9 h-9 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center mb-3">
+                        <i className="fas fa-brain text-sm"></i>
+                      </div>
+                      <h5 className="text-white font-semibold text-sm mb-1">Algorithmic Foundation</h5>
+                      <p className="text-xs text-slate-400 leading-relaxed">
+                        600+ LeetCode problems solved with deep knowledge of DSA, OOP, DBMS, OS, and computer networks.
+                      </p>
                     </div>
                   </div>
                 </motion.div>
               )}
 
-              {/* DETAILS TAB */}
-              {activeTab === "details" && (
+              {/* TAB 2: STRENGTHS */}
+              {activeTab === "strengths" && (
                 <motion.div
-                  key="details"
-                  variants={contentVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  className="glass-card p-8"
+                  key="strengths"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.35 }}
+                  className="space-y-4"
                 >
-                  <h4 className="text-2xl font-bold text-light mb-8">Quick Facts</h4>
+                  {[
+                    {
+                      title: "10× Marketplace Latency Optimization",
+                      detail: "Engineered server-side pagination and optimized MongoDB aggregation pipelines at GharSeDeal, dramatically accelerating listing responses under heavy traffic.",
+                      icon: "fas fa-tachometer-alt",
+                      color: "text-cyan-400",
+                      badge: "Impact Metric"
+                    },
+                    {
+                      title: "750+ Calculators & 3K+ Monthly Users",
+                      detail: "Built and scaled AllCalculator.net with accessible, responsive interfaces and real-time computation for 3,000+ monthly active visitors.",
+                      icon: "fas fa-calculator",
+                      color: "text-amber-400",
+                      badge: "Product Scale"
+                    },
+                    {
+                      title: "AI-Powered Nutrition & Meal Scanner",
+                      detail: "Developed Caliwo with AI meal analysis, automated macronutrient insights, and real-time nutrition dashboards using React Native and PostgreSQL.",
+                      icon: "fas fa-robot",
+                      color: "text-emerald-400",
+                      badge: "AI Engineering"
+                    },
+                    {
+                      title: "600+ LeetCode DSA Problems Solved",
+                      detail: "Deep competitive problem-solving skills across arrays, trees, dynamic programming, graphs, and system design principles.",
+                      icon: "fas fa-code-branch",
+                      color: "text-indigo-400",
+                      badge: "Problem Solving"
+                    }
+                  ].map((strength, index) => (
+                    <div key={index} className="glass-card p-5 flex items-start gap-4">
+                      <div className={`w-11 h-11 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-lg ${strength.color} shrink-0 mt-0.5`}>
+                        <i className={strength.icon}></i>
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between gap-2 mb-1">
+                          <h5 className="text-white font-bold text-sm sm:text-base">{strength.title}</h5>
+                          <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-semibold shrink-0">
+                            {strength.badge}
+                          </span>
+                        </div>
+                        <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">{strength.detail}</p>
+                      </div>
+                    </div>
+                  ))}
+                </motion.div>
+              )}
 
-                  <div className="space-y-5">
+              {/* TAB 3: FACTS */}
+              {activeTab === "facts" && (
+                <motion.div
+                  key="facts"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.35 }}
+                  className="glass-card p-6 sm:p-8 space-y-4"
+                >
+                  <h4 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                    <i className="fas fa-check-circle text-cyan-400"></i>
+                    Verified Contact & Educational Details
+                  </h4>
+
+                  <div className="divide-y divide-slate-800/80">
                     {[
-                      { label: "Education", value: "Lovely Professional University" },
-                      { label: "Degree", value: "B.Tech Computer Science" },
-                      { label: "Location", value: "Punjab, India" },
-                      { label: "Status", value: "Available for Work" },
-                    ].map((item, index) => (
-                      <div key={index} className="flex justify-between items-center py-4 border-b border-gray/10 last:border-0">
-                        <span className="text-gray font-medium">{item.label}</span>
-                        <span className="font-semibold text-light text-right">{item.value}</span>
+                      { label: "Full Name", value: "Shrawan Kumar Sah" },
+                      { label: "Primary Role", value: "Full Stack Engineer" },
+                      { label: "Current Focus", value: "React.js · TypeScript · Node.js · Databases" },
+                      { label: "Education", value: "B.Tech in Computer Science and Engineering" },
+                      { label: "College / University", value: "Lovely Professional University (LPU)" },
+                      { label: "Academic CGPA", value: "7.30 / 10.00" },
+                      { label: "Graduation Window", value: "Jun' 2022 – Jul' 2026" },
+                      { label: "Location", value: "Phagwara & Jalandhar, Punjab, India" },
+                      { label: "Email Address", value: "shrawansah3067@gmail.com", isLink: "mailto:shrawansah3067@gmail.com" },
+                      { label: "Direct Phone", value: "+91 8360705978", isLink: "tel:+918360705978" },
+                      { label: "Work Authorization", value: "Available for Full-time Roles & Internships" },
+                    ].map((item, idx) => (
+                      <div key={idx} className="py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 text-xs sm:text-sm">
+                        <span className="text-slate-400 font-medium">{item.label}</span>
+                        {item.isLink ? (
+                          <a href={item.isLink} className="text-cyan-400 hover:underline font-semibold font-mono">
+                            {item.value}
+                          </a>
+                        ) : (
+                          <span className="text-white font-semibold text-left sm:text-right">{item.value}</span>
+                        )}
                       </div>
                     ))}
                   </div>
                 </motion.div>
               )}
-
-              {/* CONTACT TAB */}
-              {activeTab === "contact" && (
-                <motion.div
-                  key="contact"
-                  variants={contentVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  className="glass-card p-8"
-                >
-                  <h4 className="text-2xl font-bold text-light mb-8">Get in Touch</h4>
-
-                  <div className="space-y-5">
-                    {/* Email */}
-                    <a
-                      href="mailto:shrawansah3067@gmail.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group flex items-center gap-5 p-5 rounded-2xl border border-gray/10 hover:border-primary/50 transition-all duration-300 bg-dark-light/30"
-                    >
-                      <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
-                        <i className="fas fa-envelope text-xl"></i>
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-sm text-gray mb-1">Email</div>
-                        <div className="font-semibold text-light group-hover:text-primary transition-colors">shrawansah3067@gmail.com</div>
-                      </div>
-                      <i className="fas fa-arrow-right -rotate-45 text-gray opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all"></i>
-                    </a>
-
-                    {/* Phone */}
-                    <a
-                      href="tel:+918360705978"
-                      className="group flex items-center gap-5 p-5 rounded-2xl border border-gray/10 hover:border-primary/50 transition-all duration-300 bg-dark-light/30"
-                    >
-                      <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
-                        <i className="fas fa-phone text-xl"></i>
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-sm text-gray mb-1">Phone</div>
-                        <div className="font-semibold text-light group-hover:text-primary transition-colors">+91 83607 05978</div>
-                      </div>
-                      <i className="fas fa-arrow-right -rotate-45 text-gray opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all"></i>
-                    </a>
-
-                    {/* LinkedIn */}
-                    <a
-                      href="https://www.linkedin.com/in/shrawansah"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group flex items-center gap-5 p-5 rounded-2xl border border-gray/10 hover:border-primary/50 transition-all duration-300 bg-dark-light/30"
-                    >
-                      <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
-                        <i className="fab fa-linkedin text-xl"></i>
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-sm text-gray mb-1">LinkedIn</div>
-                        <div className="font-semibold text-light group-hover:text-primary transition-colors">linkedin.com/in/shrawansah</div>
-                      </div>
-                      <i className="fas fa-arrow-right -rotate-45 text-gray opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all"></i>
-                    </a>
-                  </div>
-                </motion.div>
-              )}
             </AnimatePresence>
-
-            {/* Download CV */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="pt-4"
-            >
-              <a
-                href={resume}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn w-full sm:w-auto"
-              >
-                <i className="fas fa-download mr-3"></i>
-                Download CV
-              </a>
-            </motion.div>
           </div>
+
         </div>
       </div>
     </section>
